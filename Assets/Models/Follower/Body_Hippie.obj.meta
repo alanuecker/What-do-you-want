@@ -1,0 +1,98 @@
+fileFormatVersion: 2
+guid: a482e1881f316dd428bbdd17787a1523
+timeCreated: 1491054119
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bandana
+    100002: //RootNode
+    100004: HairFlower
+    100006: Hippie
+    100008: Hippie_Brille
+    100010: HippieMatte
+    400000: Bandana
+    400002: //RootNode
+    400004: HairFlower
+    400006: Hippie
+    400008: Hippie_Brille
+    400010: HippieMatte
+    2300000: Bandana
+    2300002: HairFlower
+    2300004: Hippie
+    2300006: Hippie_Brille
+    2300008: HippieMatte
+    3300000: Bandana
+    3300002: HairFlower
+    3300004: Hippie
+    3300006: Hippie_Brille
+    3300008: HippieMatte
+    4300000: Bandana
+    4300002: HairFlower
+    4300004: Hippie
+    4300006: Hippie_Brille
+    4300008: HippieMatte
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
