@@ -10,6 +10,8 @@ public class Leader : MonoBehaviour {
 
 	private Transform _lastTarget;
 
+	private CrowdManager _crowdManager;
+
 	void AskForTargets(){
 		foreach(Follower follower in _followerActive)
 			follower.DemandTarget(this);
@@ -25,7 +27,11 @@ public class Leader : MonoBehaviour {
 	}
 
 	public void AddFollower(Follower follower){
-		_followerActive.Add(follower);
+		_crowdManager.AddActiveFollower(follower);
+	}
+
+	public void RemoveFollower(Follower follower){
+		_crowdManager.RemoveActiveFollower(follower);
 	}
 
 	public void SetAllFollowers(List<Follower> allFollower){
@@ -38,6 +44,7 @@ public class Leader : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		_crowdManager = GameObject.FindGameObjectWithTag("CrowdManager").GetComponent<CrowdManager>();
 		AskForTargets();
 	}
 	

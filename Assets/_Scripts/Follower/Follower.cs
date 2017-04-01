@@ -21,8 +21,8 @@ public class Follower : MonoBehaviour {
 	public Sprite _hate;
 	
 
+	private Leader _leader;
 	private float _loyalty;
-	private float _anger;
 	private int _demandLevel;
 	private SpeechBubble _speechBubble;
 	private Target _currentTarget;
@@ -49,20 +49,6 @@ public class Follower : MonoBehaviour {
 		}
 		get {
 			return _loyalty;
-		}
-	}
-
-	private float Anger{
-		set{
-			if(value - _anger >= 10)
-				Demand = 2;
-			else if(value - _anger >= 5)
-				Demand = 1;
-			else
-				Demand = 0;
-		}
-		get{
-			return _anger;
 		}
 	}
 
@@ -107,6 +93,7 @@ public class Follower : MonoBehaviour {
 				if(targetType == _type){
 					Add(leader);
 					SetTarget(leader._target);
+					_leader = leader;
 				}
 			}
 
@@ -116,13 +103,11 @@ public class Follower : MonoBehaviour {
 	public void ReachTarget(Target target, Leader leader){
 		if(target == _currentTarget){
 			Loyalty += 2;
-			Anger += 2;
 			_followTarget._target = target.transform;
 		} else {
 			foreach(Follower.Type type in target._followerLoveTypes)
 				if(type == _type){
 					Loyalty++;
-					Anger++;
 					_followTarget._target = target.transform;
 				}
 			foreach(Follower.Type type in target._followerHateTypes)
@@ -150,6 +135,9 @@ public class Follower : MonoBehaviour {
 		SetTarget(randomTarget);
 	}
 
+	public void SetDemand(int demand){
+		Demand = demand;
+	}
 	void SetTarget(Target target){
 		_speechBubble.TargetIcon = target._targetIcon;
 		_currentTarget = target;
@@ -170,8 +158,8 @@ public class Follower : MonoBehaviour {
 
 	void Remove(){
 		_followTarget.enabled = false;
-		transform.SetParent(null);
 		_isFollowingPlayer = false;
+		_leader.RemoveFollower(this);
 	}
 	
 	List<Target> GetPossibleTargetTier(){
