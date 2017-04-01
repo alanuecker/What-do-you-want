@@ -14,7 +14,7 @@ public class SpeechBubble : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		_animator = GetComponent<Animator>();
 	}
 	

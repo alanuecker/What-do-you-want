@@ -27,4 +27,8 @@ public class FollowTarget : MonoBehaviour {
 	void OnEnable(){
 		//_navMeshAgent.
 	}
+
+	public void SetTarget(Transform target){
+		_target = target;
+	}
 }
