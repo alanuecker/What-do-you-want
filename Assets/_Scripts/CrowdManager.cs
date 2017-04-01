@@ -12,7 +12,7 @@ public class CrowdManager : MonoBehaviour {
 
 	[Header("Order: Assis - Nerds - Goths - Hippies")]
 	public GameObject[] _followers;
-	public int[] _numberOf;
+	public int _totalAmount;
 
 	[Space(5)]
 	public int[] assisTierOne;
@@ -46,10 +46,15 @@ public class CrowdManager : MonoBehaviour {
 	private List<GameObject> _targetTierTwo = new List<GameObject>();
 	private List<GameObject> _targetTierThree = new List<GameObject>();
 
-	private int _countAssis;
-	private int _countNerds;
-	private int _countGoths;
-	private int _countHippies;
+	private List<Follower> _activeAssis = new List<Follower>();
+	private List<Follower> _activeNerds = new List<Follower>();
+	private List<Follower> _activeGoths = new List<Follower>();
+	private List<Follower> _activeHippies = new List<Follower>();
+
+	private int _demandAssis;
+	private int _demandNerds;
+	private int _demandGoths;
+	private int _demandHippies;
 
 	// Use this for initialization
 	void Awake (){
@@ -76,54 +81,112 @@ public class CrowdManager : MonoBehaviour {
 			_targetTierThree.Add(_targets[i].gameObject);
 	}
 
-	//call if you want to switch from tier two to three or back
-	void SwitchTargetObjects(){
-		foreach(GameObject target in _targetTierTwo)
-			target.SetActive(!target.activeSelf);
-		foreach(GameObject target in _targetTierThree)
-			target.SetActive(!target.activeSelf);
-	}
-
 	public void AddActiveFollower(Follower follower){
 		_activeFollower.Add(follower);
-		AddType(follower._type);
+		SetFollowerDemand(follower);
+		AddType(follower);
 	}
 
 	public void RemoveActiveFollower(Follower follower){
 		_activeFollower.Remove(follower);
-		RemoveType(follower._type);
+		RemoveType(follower);
 	}
 
-	void AddType(Follower.Type type){
-		switch(type){
+	void AddType(Follower follower){
+		switch(follower._type){
 			case Follower.Type.assi:
-				_countAssis++;
+				_activeAssis.Add(follower);
+				CalculateDemandTier(_activeAssis, ref _demandAssis);
 				break;
 			case Follower.Type.nerd:
-				_countNerds++;
+				_activeNerds.Add(follower);
+				CalculateDemandTier(_activeNerds, ref _demandNerds);
 				break;
 			case Follower.Type.goth:
-				_countGoths++;
+				_activeGoths.Add(follower);
+				CalculateDemandTier(_activeGoths, ref _demandGoths);
 				break;
 			case Follower.Type.hippie:
-				_countHippies++;
+				_activeHippies.Add(follower);
+				CalculateDemandTier(_activeHippies, ref _demandHippies);
 				break;
 		}
 	}
 
-	void RemoveType(Follower.Type type){
-				switch(type){
+	void RemoveType(Follower follower){
+		switch(follower._type){
 			case Follower.Type.assi:
-				_countAssis--;
+				_activeAssis.Remove(follower);
+				CalculateDemandTier(_activeAssis, ref _demandAssis);
 				break;
 			case Follower.Type.nerd:
-				_countNerds--;
+				_activeNerds.Remove(follower);
+				CalculateDemandTier(_activeNerds, ref _demandNerds);
 				break;
 			case Follower.Type.goth:
-				_countGoths--;
+				_activeGoths.Remove(follower);
+				CalculateDemandTier(_activeGoths, ref _demandGoths);
 				break;
 			case Follower.Type.hippie:
-				_countHippies--;
+				_activeHippies.Remove(follower);
+				CalculateDemandTier(_activeHippies, ref _demandHippies);
+				break;
+		}
+	}
+
+	void CalculateDemandTier(List<Follower> active, ref int totalNumber){
+		if(active.Count >= (_totalAmount/4)*0.75f){
+			if(totalNumber != 2){
+				totalNumber = 2;
+				SwitchDemandTarget(active[0]._type);
+				foreach(Follower act in active)
+					act.SetDemand(2);
+			}
+		}
+		else if(active.Count >= (_totalAmount/4)*0.5f){
+			if(totalNumber != 1){
+				totalNumber = 1;
+				SwitchDemandTarget(active[0]._type);
+				foreach(Follower act in active)
+					act.SetDemand(1);
+			}
+		}else{
+			if(totalNumber != 0){
+				totalNumber = 0;
+				foreach(Follower act in active)
+					act.SetDemand(0);
+			}
+		}
+	}
+
+	void SwitchDemandTarget(Follower.Type type){
+		foreach(GameObject target in _targetTierTwo){
+			foreach(Follower.Type objType in target.GetComponent<Target>()._followerLoveTypes){
+				if(objType == type)
+					target.SetActive(!target.activeSelf);
+			}
+		}
+		foreach(GameObject target in _targetTierThree){
+			foreach(Follower.Type objType in target.GetComponent<Target>()._followerLoveTypes){
+				if(objType == type)
+					target.SetActive(!target.activeSelf);
+			}
+		}
+	}
+
+	void SetFollowerDemand(Follower follower){
+		switch(follower._type){
+			case Follower.Type.assi:
+				follower.SetDemand(_demandAssis);
+				break;
+			case Follower.Type.nerd:
+				follower.SetDemand(_demandNerds);
+				break;
+			case Follower.Type.goth:
+				follower.SetDemand(_demandGoths);
+				break;
+			case Follower.Type.hippie:
+				follower.SetDemand(_demandHippies);
 				break;
 		}
 	}
@@ -145,7 +208,7 @@ public class CrowdManager : MonoBehaviour {
 				tierThree.Add(_targets[x]);
 			}
 
-			for(int j = 0; j < _numberOf[i]; j++){
+			for(int j = 0; j < _totalAmount/4; j++){
 				GameObject follower = (GameObject)Instantiate(_followers[i],new Vector3(Random.Range(-_spawnRange, _spawnRange + 1), 1, Random.Range(-_spawnRange, _spawnRange + 1)), Quaternion.identity);
 				follower.GetComponent<Follower>().SetPossibleTargets(tierOne, tierTwo, tierThree);
 				follower.GetComponent<FollowTarget>().SetTarget(_player);
