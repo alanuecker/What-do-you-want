@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class FollowTarget : MonoBehaviour {
 	public Transform _target;
@@ -22,10 +21,10 @@ public class FollowTarget : MonoBehaviour {
 		Quaternion rot = Quaternion.Euler(0,180,0);
 		transform.rotation = rot;
 		if(_navMeshAgent.isActiveAndEnabled)
-			_navMeshAgent.isStopped = true;
+			_navMeshAgent.Stop();
 	}
 
 	void OnEnable(){
-		_navMeshAgent.isStopped = false;
+		//_navMeshAgent.
 	}
 }

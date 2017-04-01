@@ -7,7 +7,7 @@ public class Leader : MonoBehaviour {
 	public Target _target;
 	public Target[] _possibleTargets;
 
-	private Target _lastTarget;
+	private Transform _lastTarget;
 
 	void AskForTargets(){
 		foreach(Follower follower in _followerParent.GetComponentsInChildren<Follower>())
@@ -18,7 +18,7 @@ public class Leader : MonoBehaviour {
 		if(target == _lastTarget)
 			return;
 
-		_lastTarget = target;
+		_lastTarget = target.transform;
 		foreach(Follower follower in _followerParent.GetComponentsInChildren<Follower>())
 			follower.ReachTarget(target, this);
 	}
