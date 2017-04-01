@@ -9,7 +9,7 @@ public class Follower : MonoBehaviour {
 		goth,
 		nerd
 	}
-
+	public float _chanceToFollow = .25f;
 	public Type _type;
 	public List<Target> _possibleTargetsTierOne;
 	public List<Target>_possibleTargetsTierTwo;
@@ -44,14 +44,12 @@ public class Follower : MonoBehaviour {
 
 			else if(value - _loyalty <= -1){
 				_speechBubble.TargetIcon = _dislike;
-				Debug.Log("Dislike");
 			}
 
 			else if(value - _loyalty <= -2)
 				_speechBubble.TargetIcon = _hate;
 
 			StopCoroutine(LowerLoyalty());
-			StartCoroutine(LowerLoyalty());
 			_loyalty = value;
 			if(_loyalty < -2)
 				Remove();
@@ -101,6 +99,8 @@ public class Follower : MonoBehaviour {
 			foreach(Target target in leader._targets){
 			foreach(Type targetType in target._followerLoveTypes){
 				if(targetType == _type){
+					if(Random.value > _chanceToFollow)
+						return;
 					Add(leader);
 					_leader = leader;
 					SetTarget(target);
@@ -119,7 +119,6 @@ public class Follower : MonoBehaviour {
 					yield return null;
 				}
 		}
-		Debug.Log("wrong target");
 		Loyalty--;
 	}
 
@@ -189,8 +188,9 @@ public class Follower : MonoBehaviour {
 		_isFollowingPlayer = true;
 	}
 
-	void Remove(){
+	IEnumerator Remove(){
 		StopCoroutine(LowerLoyalty());
+		yield return new WaitForFixedUpdate();
 		_followTarget.enabled = false;
 		_isFollowingPlayer = false;
 		_leader.RemoveDemandCount(_currentTarget._type);
@@ -215,10 +215,12 @@ public class Follower : MonoBehaviour {
 	void Update () {
 		if(_pit){
 			if(_followTarget.GetAtTarget())
-				_followTarget.SetTarget(_pitPath[++_pitTarget]);
+				_followTarget.SetTarget(_pitPath[_pitTarget]);
 
-			if(_pitTarget >= _pitPath.Count)
+			if(++_pitTarget >= _pitPath.Count){
 				_pit = false;
+				SetDemand(_demandLevel);
+			}
 		}
 	}
 }

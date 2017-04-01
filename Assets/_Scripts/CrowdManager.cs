@@ -59,11 +59,10 @@ public class CrowdManager : MonoBehaviour {
 
 	private Dictionary<Target.Type, int> _demandCount = new Dictionary<Target.Type, int>();
 
-
 	public class MoshPit{
 		Follower _leader;
 		List<Follower> _pitPeople;
-		List<Vector3> _path;
+		List<Vector3> _path = new List<Vector3>();
 
 		public MoshPit(Follower leader, List<Follower> pitPeople){
 			_leader = leader;
@@ -78,11 +77,11 @@ public class CrowdManager : MonoBehaviour {
 		}
 
 		void Init(){
-			for (int i = 0; i < _pitPeople.Count; i++){
-				Vector3 pos = this.RandomCircle(_leader.transform.position, 5.0f);
+			for (int i = 0; i < 5; i++){
+				Vector3 pos = this.RandomCircle(_leader.transform.position, 1.0f);
 				Quaternion rot = Quaternion.FromToRotation(Vector3.forward, _leader.transform.position-pos);
 				NavMeshHit hit;
-				if(NavMesh.SamplePosition(pos, out hit, 2.0f, NavMesh.AllAreas)){
+				if(NavMesh.SamplePosition(pos, out hit, 1.0f, NavMesh.AllAreas)){
 					_path.Add(hit.position);
 				}else{
 					i--;
@@ -103,6 +102,12 @@ public class CrowdManager : MonoBehaviour {
 			pos.z = center.z;
 			return pos;
      	}
+	}
+	public List<Follower> AllFollower{
+		get { return _allFollower; }
+	}
+	public List<Follower> ActiveFollower{
+		get { return _activeFollower; }
 	}
 	// Use this for initialization
 	void Awake (){
@@ -283,14 +288,6 @@ public class CrowdManager : MonoBehaviour {
 				_demandCount[type]--;
 	}
 	void Start () {
-		List<Follower> pitPeople = new List<Follower>();
-
-		for(int i = 0; i < 20; i++){
-			pitPeople.Add(_allFollower[Random.Range(0, _allFollower.Count)]);
-		}
-
-		MoshPit firstPit = new MoshPit(_allFollower[Random.Range(0, _allFollower.Count)], pitPeople);
-
 		_player = GameObject.FindGameObjectWithTag("Player").transform;
 
 		for(int i = 0; i < _followers.Length; i++){
@@ -324,10 +321,15 @@ public class CrowdManager : MonoBehaviour {
 
 				_allFollower.Add(follower.GetComponent<Follower>());
 			}
+
+					List<Follower> pitPeople = new List<Follower>();
+
+		for(int x = 0; x < 20; x++){
+			pitPeople.Add(_allFollower[Random.Range(0, _allFollower.Count)]);
 		}
 
-		_player.GetComponent<Leader>().SetAllFollowers(_allFollower);
-		_player.GetComponent<Leader>().SetActiveFollowers(_activeFollower);
+		//MoshPit firstPit = new MoshPit(_allFollower[Random.Range(0, _allFollower.Count)], pitPeople);
+		}
 	}
 	
 	// Update is called once per frame

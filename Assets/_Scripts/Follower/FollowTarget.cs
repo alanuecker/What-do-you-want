@@ -29,7 +29,7 @@ public class FollowTarget : MonoBehaviour {
 	}
 
 	public bool GetAtTarget(){
-		return _navMeshAgent.remainingDistance < 0.5f;
+		return _navMeshAgent.remainingDistance < 5.0f;
 	}
 
 	public void SetTarget(Vector3 target){
