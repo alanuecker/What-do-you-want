@@ -231,7 +231,6 @@ public class CrowdManager : MonoBehaviour {
 	public void RemoveDemandCount(Target.Type type){
 		if(_demandCount.ContainsKey(type))
 			if(_demandCount[type]-- <= 0){
-				print("deactivate demand count for type " + type + " total count " + _demandCount[type]);
 				DeactivateDemandDirectionIndicator(type);
 				_demandCount.Remove(type);
 			}

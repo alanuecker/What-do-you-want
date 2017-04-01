@@ -192,8 +192,6 @@ MonoBehaviour:
   _dislike: {fileID: 21300000, guid: 0c106c4352812c443add1c105ec5a0fb, type: 3}
   _love: {fileID: 21300000, guid: 57993139c711e804ea0eb71b051720b6, type: 3}
   _hate: {fileID: 21300000, guid: e870b0f0d168aeb45bce3778fdd4cc60, type: 3}
-  _lowerLoyaltyMinTime: 5
-  _lowerLoyaltyMaxTime: 15
 --- !u!114 &114000012724889122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,7 +237,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1000012498655942}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

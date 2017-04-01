@@ -1,21 +1,21 @@
 fileFormatVersion: 2
 guid: e11c7ced85884ec4fb4a4528f0093fe1
-timeCreated: 1491066776
+timeCreated: 1491059443
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: TargetIcons_v2_Opfer
-    21300002: TargetIcons_v2_Laser
-    21300004: TargetIcons_v2_Frieden
-    21300006: TargetIcons_v2_Cage
-    21300008: TargetIcons_v2_Games
-    21300010: TargetIcons_v2_Liebe
-    21300012: TargetIcons_v2_Anime
-    21300014: TargetIcons_v2_Ritual
-    21300016: TargetIcons_v2_Bier
-    21300018: TargetIcons_v2_Klo
-    21300020: TargetIcons_v2_Wurst
-    21300022: TargetIcons_v2_Wein
+    21300000: TargetIcons_v2_0
+    21300002: TargetIcons_v2_1
+    21300004: TargetIcons_v2_2
+    21300006: TargetIcons_v2_3
+    21300008: TargetIcons_v2_4
+    21300010: TargetIcons_v2_5
+    21300012: TargetIcons_v2_6
+    21300014: TargetIcons_v2_7
+    21300016: TargetIcons_v2_8
+    21300018: TargetIcons_v2_9
+    21300020: TargetIcons_v2_10
+    21300022: TargetIcons_v2_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -65,7 +65,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TargetIcons_v2_Opfer
+      name: TargetIcons_v2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -73,12 +73,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_Laser
+      name: TargetIcons_v2_1
       rect:
         serializedVersion: 2
         x: 512
@@ -86,25 +86,25 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_Frieden
+      name: TargetIcons_v2_2
       rect:
         serializedVersion: 2
         x: 1024
-        y: 1017
+        y: 1024
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_Cage
+      name: TargetIcons_v2_3
       rect:
         serializedVersion: 2
         x: 1536
@@ -112,12 +112,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_Games
+      name: TargetIcons_v2_4
       rect:
         serializedVersion: 2
         x: 0
@@ -125,12 +125,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_Liebe
+      name: TargetIcons_v2_5
       rect:
         serializedVersion: 2
         x: 512
@@ -138,12 +138,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_Anime
+      name: TargetIcons_v2_6
       rect:
         serializedVersion: 2
         x: 1024
@@ -151,12 +151,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_Ritual
+      name: TargetIcons_v2_7
       rect:
         serializedVersion: 2
         x: 1536
@@ -164,12 +164,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_Bier
+      name: TargetIcons_v2_8
       rect:
         serializedVersion: 2
         x: 0
@@ -177,12 +177,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_Klo
+      name: TargetIcons_v2_9
       rect:
         serializedVersion: 2
         x: 512
@@ -190,12 +190,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_Wurst
+      name: TargetIcons_v2_10
       rect:
         serializedVersion: 2
         x: 1024
@@ -203,12 +203,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_Wein
+      name: TargetIcons_v2_11
       rect:
         serializedVersion: 2
         x: 1536
@@ -216,7 +216,7 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
