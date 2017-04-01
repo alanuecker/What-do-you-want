@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b02911fa3a61d0c439e6f968d4433cf9
-timeCreated: 1491054120
+guid: 12e58f6a09a5dc94191f6ec1bb668888
+timeCreated: 1491059548
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -10,28 +10,28 @@ ModelImporter:
     100004: BowTie
     100006: Nerd
     100008: NerdGlasses
-    100010: Nose
+    100010: NerdGlasses_Frame
     400000: //RootNode
     400002: BowlCut
     400004: BowTie
     400006: Nerd
     400008: NerdGlasses
-    400010: Nose
+    400010: NerdGlasses_Frame
     2300000: BowlCut
     2300002: BowTie
     2300004: Nerd
     2300006: NerdGlasses
-    2300008: Nose
+    2300008: NerdGlasses_Frame
     3300000: BowlCut
     3300002: BowTie
     3300004: Nerd
     3300006: NerdGlasses
-    3300008: Nose
+    3300008: NerdGlasses_Frame
     4300000: BowlCut
     4300002: BowTie
     4300004: Nerd
     4300006: NerdGlasses
-    4300008: Nose
+    4300008: NerdGlasses_Frame
   materials:
     importMaterials: 1
     materialName: 0

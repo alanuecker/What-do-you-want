@@ -1,37 +1,47 @@
 fileFormatVersion: 2
-guid: a482e1881f316dd428bbdd17787a1523
-timeCreated: 1491054119
+guid: b503da2f0c869374ca6284e872920766
+timeCreated: 1491059550
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: Bandana
-    100002: //RootNode
-    100004: HairFlower
-    100006: Hippie
-    100008: Hippie_Brille
-    100010: HippieMatte
+    100002: Blossom
+    100004: //RootNode
+    100006: HairFlower
+    100008: Hippie
+    100010: Hippie_Brille
+    100012: HippieMatte
+    100014: Petals
     400000: Bandana
-    400002: //RootNode
-    400004: HairFlower
-    400006: Hippie
-    400008: Hippie_Brille
-    400010: HippieMatte
+    400002: Blossom
+    400004: //RootNode
+    400006: HairFlower
+    400008: Hippie
+    400010: Hippie_Brille
+    400012: HippieMatte
+    400014: Petals
     2300000: Bandana
-    2300002: HairFlower
-    2300004: Hippie
-    2300006: Hippie_Brille
-    2300008: HippieMatte
+    2300002: Blossom
+    2300004: HairFlower
+    2300006: Hippie
+    2300008: Hippie_Brille
+    2300010: HippieMatte
+    2300012: Petals
     3300000: Bandana
-    3300002: HairFlower
-    3300004: Hippie
-    3300006: Hippie_Brille
-    3300008: HippieMatte
+    3300002: Blossom
+    3300004: HairFlower
+    3300006: Hippie
+    3300008: Hippie_Brille
+    3300010: HippieMatte
+    3300012: Petals
     4300000: Bandana
-    4300002: HairFlower
-    4300004: Hippie
-    4300006: Hippie_Brille
-    4300008: HippieMatte
+    4300002: Blossom
+    4300004: HairFlower
+    4300006: Hippie
+    4300008: Hippie_Brille
+    4300010: HippieMatte
+    4300012: Petals
   materials:
     importMaterials: 1
     materialName: 0
