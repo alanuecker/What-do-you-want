@@ -32,6 +32,9 @@ public class Follower : MonoBehaviour {
 	private FollowTarget _followTarget;
 	private bool _isFollowingPlayer;
 
+	private int _pitTarget;
+	private bool _pit;
+	private List<Vector3> _pitPath;
 	private float Loyalty{
 		set {
 			if(value - _loyalty >= 2)
@@ -105,11 +108,8 @@ public class Follower : MonoBehaviour {
 				}
 			}
 			}
-
 		}
 	}
-
-	
 
 	IEnumerator LowerLoyalty(){
 		yield return new WaitForSeconds(Random.Range(_lowerLoyaltyMinTime, _lowerLoyaltyMaxTime));
@@ -166,6 +166,13 @@ public class Follower : MonoBehaviour {
 		_leader.AddDemandCount(target._type);
 	}
 
+	public void MoshPit(List<Vector3> path){
+		_leader = null;
+		_pit = true;
+		_pitPath = path;
+		//_followTarget.SetTarget(path[_pitTarget]);
+	}
+
 	public void SetPossibleTargets(List<Target> tierOne, List<Target> tierTwo, List<Target> tierThree){
 		_possibleTargetsTierOne = tierOne;
 		_possibleTargetsTierTwo = tierTwo;
@@ -206,6 +213,14 @@ public class Follower : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+		if(_pit){
+			//if(_followTarget.GetAtTarget())
+				//_followTarget.SetTarget(_pitPath[_pitTarget]);
+
+			if(++_pitTarget >= _pitPath.Count){
+				_pit = false;
+				SetDemand(_demandLevel);
+			}
+		}
 	}
 }

@@ -31,4 +31,8 @@ public class FollowTarget : MonoBehaviour {
 	public void SetTarget(Transform target){
 		_target = target;
 	}
+
+	public bool GetAtTarget(){
+		return _navMeshAgent.remainingDistance < 5.0f;
+	}
 }

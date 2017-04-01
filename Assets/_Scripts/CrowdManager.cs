@@ -59,6 +59,50 @@ public class CrowdManager : MonoBehaviour {
 
 	private Dictionary<Target.Type, int> _demandCount = new Dictionary<Target.Type, int>();
 
+	public class MoshPit{
+		Follower _leader;
+		List<Follower> _pitPeople;
+		List<Vector3> _path = new List<Vector3>();
+
+		public MoshPit(Follower leader, List<Follower> pitPeople){
+			_leader = leader;
+			_pitPeople = pitPeople;
+			this.Init();
+		}
+
+		public MoshPit(){
+			_pitPeople = new List<Follower>();
+			_path = new List<Vector3>();
+			_leader = new Follower();
+		}
+
+		void Init(){
+			for (int i = 0; i < 5; i++){
+				Vector3 pos = this.RandomCircle(_leader.transform.position, 1.0f);
+				Quaternion rot = Quaternion.FromToRotation(Vector3.forward, _leader.transform.position-pos);
+				NavMeshHit hit;
+				if(NavMesh.SamplePosition(pos, out hit, 1.0f, NavMesh.AllAreas)){
+					_path.Add(hit.position);
+				}else{
+					i--;
+					continue;
+				}
+			}
+
+			foreach(Follower follower in _pitPeople){
+				follower.MoshPit(_path);
+			}
+		}
+
+		Vector3 RandomCircle (Vector3 center, float radius){
+			float ang = Random.value * 360;
+			Vector3 pos;
+			pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+			pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+			pos.z = center.z;
+			return pos;
+     	}
+	}
 	public List<Follower> AllFollower{
 		get { return _allFollower; }
 	}
@@ -273,10 +317,18 @@ public class CrowdManager : MonoBehaviour {
 
 				GameObject follower = (GameObject)Instantiate(_followers[i], randomPosition, Quaternion.identity);
 				follower.GetComponent<Follower>().SetPossibleTargets(tierOne, tierTwo, tierThree);
-				follower.GetComponent<FollowTarget>().SetTarget(_player);
+				follower.GetComponent<FollowTarget>().SetTarget(_player.transform);
 
 				_allFollower.Add(follower.GetComponent<Follower>());
 			}
+
+					List<Follower> pitPeople = new List<Follower>();
+
+		for(int x = 0; x < 20; x++){
+			pitPeople.Add(_allFollower[Random.Range(0, _allFollower.Count)]);
+		}
+
+		//MoshPit firstPit = new MoshPit(_allFollower[Random.Range(0, _allFollower.Count)], pitPeople);
 		}
 	}
 	
