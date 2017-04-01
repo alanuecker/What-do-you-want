@@ -11,9 +11,9 @@ public class Follower : MonoBehaviour {
 	}
 
 	public Type _type;
-	public Target[] _possibleTargetsTierOne;
-	public Target[] _possibleTargetsTierTwo;
-	public Target[] _possibleTargetsTierThree;
+	public List<Target> _possibleTargetsTierOne;
+	public List<Target>_possibleTargetsTierTwo;
+	public List<Target> _possibleTargetsTierThree;
 
 	public Sprite _like;
 	public Sprite _dislike;
@@ -155,7 +155,7 @@ public class Follower : MonoBehaviour {
 		_currentTarget = target;
 	}
 
-	public void SetPossibleTargets(Target[] tierOne, Target[] tierTwo, Target[] tierThree){
+	public void SetPossibleTargets(List<Target> tierOne, List<Target> tierTwo, List<Target> tierThree){
 		_possibleTargetsTierOne = tierOne;
 		_possibleTargetsTierTwo = tierTwo;
 		_possibleTargetsTierThree = tierThree;
@@ -164,7 +164,7 @@ public class Follower : MonoBehaviour {
 	void Add(Leader leader){
 		_loyalty = -2;
 		_followTarget.enabled = true;
-		transform.SetParent(leader._followerParent);
+		leader.GetComponent<Leader>().AddFollower(this);
 		_isFollowingPlayer = true;
 	}
 

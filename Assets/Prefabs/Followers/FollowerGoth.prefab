@@ -185,10 +185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 2
-  _possibleTargets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _possibleTargetsTierOne: []
+  _possibleTargetsTierTwo: []
+  _possibleTargetsTierThree: []
   _like: {fileID: 21300000, guid: 7895d9a4c3e1b8a4aa35c82edfe82d66, type: 3}
   _dislike: {fileID: 21300000, guid: 0c106c4352812c443add1c105ec5a0fb, type: 3}
   _love: {fileID: 21300000, guid: 57993139c711e804ea0eb71b051720b6, type: 3}
