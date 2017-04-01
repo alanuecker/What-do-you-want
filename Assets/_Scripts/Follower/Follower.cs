@@ -32,6 +32,9 @@ public class Follower : MonoBehaviour {
 	private FollowTarget _followTarget;
 	private bool _isFollowingPlayer;
 
+	private int _pitTarget;
+	private bool _pit;
+	private List<Vector3> _pitPath;
 	private float Loyalty{
 		set {
 			if(value - _loyalty >= 2)
@@ -105,11 +108,8 @@ public class Follower : MonoBehaviour {
 				}
 			}
 			}
-
 		}
 	}
-
-	
 
 	IEnumerator LowerLoyalty(){
 		yield return new WaitForSeconds(Random.Range(_lowerLoyaltyMinTime, _lowerLoyaltyMaxTime));
@@ -126,12 +126,12 @@ public class Follower : MonoBehaviour {
 	public void ReachTarget(Target target, Leader leader){
 		if(target == _currentTarget){
 			Loyalty += 2;
-			_followTarget._target = target.transform;
+			_followTarget._target = target.transform.position;
 		} else {
 			foreach(Follower.Type type in target._followerLoveTypes)
 				if(type == _type){
 					Loyalty++;
-					_followTarget._target = target.transform;
+					_followTarget._target = target.transform.position;
 				}
 			foreach(Follower.Type type in target._followerHateTypes)
 				if(type == _type){
@@ -147,7 +147,7 @@ public class Follower : MonoBehaviour {
 		DemandTarget(leader);
 	}
 	public void DemandTarget(Leader leader){
-		_followTarget._target = leader.transform;
+		_followTarget._target = leader.transform.position;
 
 		if(_unusedTargets.Count == 0)
 			_unusedTargets = GetPossibleTargetTier();
@@ -165,6 +165,13 @@ public class Follower : MonoBehaviour {
 		_speechBubble.TargetIcon = target._targetIcon;
 		_currentTarget = target;
 		_leader.AddDemandCount(target._type);
+	}
+
+	public void MoshPit(List<Vector3> path){
+		_leader = null;
+		_pit = true;
+		_pitPath = path;
+		_followTarget.SetTarget(path[_pitTarget]);
 	}
 
 	public void SetPossibleTargets(List<Target> tierOne, List<Target> tierTwo, List<Target> tierThree){
@@ -206,6 +213,12 @@ public class Follower : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+		if(_pit){
+			if(_followTarget.GetAtTarget())
+				_followTarget.SetTarget(_pitPath[++_pitTarget]);
+
+			if(_pitTarget >= _pitPath.Count)
+				_pit = false;
+		}
 	}
 }

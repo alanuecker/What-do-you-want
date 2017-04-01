@@ -59,6 +59,51 @@ public class CrowdManager : MonoBehaviour {
 
 	private Dictionary<Target.Type, int> _demandCount = new Dictionary<Target.Type, int>();
 
+
+	public class MoshPit{
+		Follower _leader;
+		List<Follower> _pitPeople;
+		List<Vector3> _path;
+
+		public MoshPit(Follower leader, List<Follower> pitPeople){
+			_leader = leader;
+			_pitPeople = pitPeople;
+			this.Init();
+		}
+
+		public MoshPit(){
+			_pitPeople = new List<Follower>();
+			_path = new List<Vector3>();
+			_leader = new Follower();
+		}
+
+		void Init(){
+			for (int i = 0; i < _pitPeople.Count; i++){
+				Vector3 pos = this.RandomCircle(_leader.transform.position, 5.0f);
+				Quaternion rot = Quaternion.FromToRotation(Vector3.forward, _leader.transform.position-pos);
+				NavMeshHit hit;
+				if(NavMesh.SamplePosition(pos, out hit, 2.0f, NavMesh.AllAreas)){
+					_path.Add(hit.position);
+				}else{
+					i--;
+					continue;
+				}
+			}
+
+			foreach(Follower follower in _pitPeople){
+				follower.MoshPit(_path);
+			}
+		}
+
+		Vector3 RandomCircle (Vector3 center, float radius){
+			float ang = Random.value * 360;
+			Vector3 pos;
+			pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+			pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+			pos.z = center.z;
+			return pos;
+     	}
+	}
 	// Use this for initialization
 	void Awake (){
 		_tierOne.Add(assisTierOne);
@@ -238,6 +283,14 @@ public class CrowdManager : MonoBehaviour {
 				_demandCount[type]--;
 	}
 	void Start () {
+		List<Follower> pitPeople = new List<Follower>();
+
+		for(int i = 0; i < 20; i++){
+			pitPeople.Add(_allFollower[Random.Range(0, _allFollower.Count)]);
+		}
+
+		MoshPit firstPit = new MoshPit(_allFollower[Random.Range(0, _allFollower.Count)], pitPeople);
+
 		_player = GameObject.FindGameObjectWithTag("Player").transform;
 
 		for(int i = 0; i < _followers.Length; i++){
@@ -267,7 +320,7 @@ public class CrowdManager : MonoBehaviour {
 
 				GameObject follower = (GameObject)Instantiate(_followers[i], randomPosition, Quaternion.identity);
 				follower.GetComponent<Follower>().SetPossibleTargets(tierOne, tierTwo, tierThree);
-				follower.GetComponent<FollowTarget>().SetTarget(_player);
+				follower.GetComponent<FollowTarget>().SetTarget(_player.transform.position);
 
 				_allFollower.Add(follower.GetComponent<Follower>());
 			}

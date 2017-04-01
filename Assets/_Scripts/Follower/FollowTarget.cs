@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowTarget : MonoBehaviour {
-	public Transform _target;
+	public Vector3 _target;
 
 	private NavMeshAgent _navMeshAgent;
 
@@ -14,7 +14,7 @@ public class FollowTarget : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		_navMeshAgent.destination = _target.position;
+		_navMeshAgent.destination = _target;
 	}
 
 	void OnDisable(){
@@ -28,7 +28,11 @@ public class FollowTarget : MonoBehaviour {
 		//_navMeshAgent.
 	}
 
-	public void SetTarget(Transform target){
+	public bool GetAtTarget(){
+		return _navMeshAgent.remainingDistance < 0.5f;
+	}
+
+	public void SetTarget(Vector3 target){
 		_target = target;
 	}
 }
