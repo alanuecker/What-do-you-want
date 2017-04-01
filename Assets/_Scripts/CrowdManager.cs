@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CrowdManager : MonoBehaviour {
-	public int _spawnRange = 40;
+	public int _spawnRange = 80;
+	public Transform _spawnCenter;
 	public Target[] _targets;
 
 	public int[] targetTierOne;
@@ -209,7 +210,16 @@ public class CrowdManager : MonoBehaviour {
 			}
 
 			for(int j = 0; j < _totalAmount/4; j++){
-				GameObject follower = (GameObject)Instantiate(_followers[i],new Vector3(Random.Range(-_spawnRange, _spawnRange + 1), 1, Random.Range(-_spawnRange, _spawnRange + 1)), Quaternion.identity);
+				NavMeshHit hit;
+				Vector3 randomPosition = new Vector3(Random.Range(_spawnCenter.position.x -_spawnRange, _spawnCenter.position.x + _spawnRange + 1), Random.Range(_spawnCenter.position.y - 4, _spawnCenter.position.y + 2), Random.Range(_spawnCenter.position.z -_spawnRange, _spawnCenter.position.z + _spawnRange + 1));
+				if(NavMesh.SamplePosition(randomPosition, out hit, 10.0f, NavMesh.AllAreas)){
+					randomPosition = hit.position;
+				}else{
+					j--;
+					continue;
+				}
+
+				GameObject follower = (GameObject)Instantiate(_followers[i], randomPosition, Quaternion.identity);
 				follower.GetComponent<Follower>().SetPossibleTargets(tierOne, tierTwo, tierThree);
 				follower.GetComponent<FollowTarget>().SetTarget(_player);
 

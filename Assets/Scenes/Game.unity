@@ -668,6 +668,34 @@ Transform:
   - {fileID: 1765735591}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1 &1141718277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1141718278}
+  m_Layer: 0
+  m_Name: SpawnCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1141718278
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1141718277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.6, y: -3, z: -13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1001 &1213674462
 Prefab:
   m_ObjectHideFlags: 0
@@ -801,7 +829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351c328fe46ad3c44af4baf960359f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnRange: 40
+  _spawnRange: 80
+  _spawnCenter: {fileID: 1141718278}
   _targets:
   - {fileID: 331496231}
   - {fileID: 189601990}
@@ -823,7 +852,7 @@ MonoBehaviour:
   - {fileID: 1000010588618698, guid: 7e48dbdc564a2b844a2addb5a89e0d5d, type: 2}
   - {fileID: 1000012498655942, guid: 24b35e9735942c141a8090ed3c51dea9, type: 2}
   - {fileID: 1000013382765364, guid: 6aa149753c27f9342afffbf8fd4ae1e8, type: 2}
-  _numberOf: 64000000640000006400000064000000
+  _totalAmount: 1000
   assisTierOne: 000000000100000003000000
   assisTierTwo: 0600000007000000
   assisTierThree: 09000000
