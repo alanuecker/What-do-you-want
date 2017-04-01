@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 828ec7e947cb81046a03106a174c5eff
-timeCreated: 1491054118
+guid: 1638400e1f6c73e4ba5563725cb108ee
+timeCreated: 1491059550
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,29 +9,34 @@ ModelImporter:
     100002: BaselballBat
     100004: //RootNode
     100006: Schnauzer
-    100008: Sunglasses
-    100010: Vokuhila
+    100008: Sunglasses_Frame
+    100010: Sunglasses_Glasses
+    100012: Vokuhila
     400000: Assi
     400002: BaselballBat
     400004: //RootNode
     400006: Schnauzer
-    400008: Sunglasses
-    400010: Vokuhila
+    400008: Sunglasses_Frame
+    400010: Sunglasses_Glasses
+    400012: Vokuhila
     2300000: Assi
     2300002: BaselballBat
     2300004: Schnauzer
-    2300006: Sunglasses
-    2300008: Vokuhila
+    2300006: Sunglasses_Frame
+    2300008: Sunglasses_Glasses
+    2300010: Vokuhila
     3300000: Assi
     3300002: BaselballBat
     3300004: Schnauzer
-    3300006: Sunglasses
-    3300008: Vokuhila
+    3300006: Sunglasses_Frame
+    3300008: Sunglasses_Glasses
+    3300010: Vokuhila
     4300000: Assi
     4300002: BaselballBat
     4300004: Schnauzer
-    4300006: Sunglasses
-    4300008: Vokuhila
+    4300006: Sunglasses_Frame
+    4300008: Sunglasses_Glasses
+    4300010: Vokuhila
   materials:
     importMaterials: 1
     materialName: 0

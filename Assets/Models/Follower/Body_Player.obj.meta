@@ -1,22 +1,27 @@
 fileFormatVersion: 2
-guid: f831454e7ccbd634488a538ce1b7735c
-timeCreated: 1491054120
+guid: e5ebdff8eaea55945a6dc553205d7b76
+timeCreated: 1491059551
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
     100002: Crown
-    100004: Player
+    100004: Crystal
+    100006: Player
     400000: //RootNode
     400002: Crown
-    400004: Player
+    400004: Crystal
+    400006: Player
     2300000: Crown
-    2300002: Player
+    2300002: Crystal
+    2300004: Player
     3300000: Crown
-    3300002: Player
+    3300002: Crystal
+    3300004: Player
     4300000: Crown
-    4300002: Player
+    4300002: Crystal
+    4300004: Player
   materials:
     importMaterials: 1
     materialName: 0

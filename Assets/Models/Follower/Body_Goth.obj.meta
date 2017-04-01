@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0bb9186691e7e03418989cee7674319e
-timeCreated: 1491054118
+guid: c34b0350eafe33445a4db50d5a352bf2
+timeCreated: 1491059551
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,19 +9,24 @@ ModelImporter:
     100002: Goth
     100004: GothHair
     100006: Necklace
+    100008: Spikes
     400000: //RootNode
     400002: Goth
     400004: GothHair
     400006: Necklace
+    400008: Spikes
     2300000: Goth
     2300002: GothHair
     2300004: Necklace
+    2300006: Spikes
     3300000: Goth
     3300002: GothHair
     3300004: Necklace
+    3300006: Spikes
     4300000: Goth
     4300002: GothHair
     4300004: Necklace
+    4300006: Spikes
   materials:
     importMaterials: 1
     materialName: 0

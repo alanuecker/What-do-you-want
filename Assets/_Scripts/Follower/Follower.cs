@@ -26,7 +26,7 @@ public class Follower : MonoBehaviour {
 	private Leader _leader;
 	private float _loyalty;
 	private int _demandLevel;
-	private SpeechBubble _speechBubble;
+	private SpeechBubbleSpawner _speechBubble;
 	private Target _currentTarget;
 	private List<Target> _unusedTargets;
 	private FollowTarget _followTarget;
@@ -35,17 +35,17 @@ public class Follower : MonoBehaviour {
 	private float Loyalty{
 		set {
 			if(value - _loyalty >= 2)
-				_speechBubble._targetIcon.sprite = _love;
+				_speechBubble.TargetIcon = _love;
 			else if(value - _loyalty >= 1)
-				_speechBubble._targetIcon.sprite = _like;
+				_speechBubble.TargetIcon = _like;
 
 			else if(value - _loyalty <= -1){
-				_speechBubble._targetIcon.sprite = _dislike;
+				_speechBubble.TargetIcon = _dislike;
 				Debug.Log("Dislike");
 			}
 
 			else if(value - _loyalty <= -2)
-				_speechBubble._targetIcon.sprite = _hate;
+				_speechBubble.TargetIcon = _hate;
 
 			StopCoroutine(LowerLoyalty());
 			StartCoroutine(LowerLoyalty());
@@ -86,7 +86,7 @@ public class Follower : MonoBehaviour {
 		_isFollowingPlayer = _followTarget.enabled;
 
 		_unusedTargets = new List<Target>(_possibleTargetsTierOne);
-		_speechBubble = GetComponentInChildren<SpeechBubble>();
+		_speechBubble = GetComponentInChildren<SpeechBubbleSpawner>();
 	}
 
 	void OnTriggerEnter(Collider collider){
@@ -101,6 +101,7 @@ public class Follower : MonoBehaviour {
 					Add(leader);
 					_leader = leader;
 					SetTarget(target);
+					return;
 				}
 			}
 			}
@@ -173,13 +174,16 @@ public class Follower : MonoBehaviour {
 	}
 
 	void Add(Leader leader){
-		Loyalty = -2;
+		_loyalty = -2;
+		StopCoroutine(LowerLoyalty());
+		StartCoroutine(LowerLoyalty());
 		_followTarget.enabled = true;
 		leader.GetComponent<Leader>().AddFollower(this);
 		_isFollowingPlayer = true;
 	}
 
 	void Remove(){
+		StopCoroutine(LowerLoyalty());
 		_followTarget.enabled = false;
 		_isFollowingPlayer = false;
 		_leader.RemoveDemandCount(_currentTarget._type);
