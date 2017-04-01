@@ -59,6 +59,12 @@ public class CrowdManager : MonoBehaviour {
 
 	private Dictionary<Target.Type, int> _demandCount = new Dictionary<Target.Type, int>();
 
+	public List<Follower> AllFollower{
+		get { return _allFollower; }
+	}
+	public List<Follower> ActiveFollower{
+		get { return _activeFollower; }
+	}
 	// Use this for initialization
 	void Awake (){
 		_tierOne.Add(assisTierOne);
@@ -272,9 +278,6 @@ public class CrowdManager : MonoBehaviour {
 				_allFollower.Add(follower.GetComponent<Follower>());
 			}
 		}
-
-		_player.GetComponent<Leader>().SetAllFollowers(_allFollower);
-		_player.GetComponent<Leader>().SetActiveFollowers(_activeFollower);
 	}
 	
 	// Update is called once per frame
