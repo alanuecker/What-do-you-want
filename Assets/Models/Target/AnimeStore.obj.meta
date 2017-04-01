@@ -1,37 +1,87 @@
 fileFormatVersion: 2
-guid: ce3675a6ad4124cdc9f8e1be85eb585e
-timeCreated: 1491055769
+guid: 747a09351e09c1545b345aeb2fc5dd78
+timeCreated: 1491044663
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Dixi_Klo_Cube.006_Material
-    100004: Dixi_Klo_Cube.006_Material.001
-    100006: Dixi_Klo_Cube.006_Material.002
-    100008: Dixi_Klo_Cube.006_Material.003
-    100010: Dixi_Klo_Cube.006_Material.014
+    100002: Banzai
+    100004: BanzaiJAP
+    100006: Figure
+    100008: Figure001
+    100010: Figure002
+    100012: Figure003
+    100014: Pillow
+    100016: Pillow004
+    100018: Pillow005
+    100020: Poster
+    100022: Poster2
+    100024: Poster3
+    100026: Poster4
+    100028: Roof
+    100030: Stand
     400000: //RootNode
-    400002: Dixi_Klo_Cube.006_Material
-    400004: Dixi_Klo_Cube.006_Material.001
-    400006: Dixi_Klo_Cube.006_Material.002
-    400008: Dixi_Klo_Cube.006_Material.003
-    400010: Dixi_Klo_Cube.006_Material.014
-    2300000: Dixi_Klo_Cube.006_Material
-    2300002: Dixi_Klo_Cube.006_Material.001
-    2300004: Dixi_Klo_Cube.006_Material.002
-    2300006: Dixi_Klo_Cube.006_Material.003
-    2300008: Dixi_Klo_Cube.006_Material.014
-    3300000: Dixi_Klo_Cube.006_Material
-    3300002: Dixi_Klo_Cube.006_Material.001
-    3300004: Dixi_Klo_Cube.006_Material.002
-    3300006: Dixi_Klo_Cube.006_Material.003
-    3300008: Dixi_Klo_Cube.006_Material.014
-    4300000: Dixi_Klo_Cube.006_Material
-    4300002: Dixi_Klo_Cube.006_Material.001
-    4300004: Dixi_Klo_Cube.006_Material.002
-    4300006: Dixi_Klo_Cube.006_Material.003
-    4300008: Dixi_Klo_Cube.006_Material.014
+    400002: Banzai
+    400004: BanzaiJAP
+    400006: Figure
+    400008: Figure001
+    400010: Figure002
+    400012: Figure003
+    400014: Pillow
+    400016: Pillow004
+    400018: Pillow005
+    400020: Poster
+    400022: Poster2
+    400024: Poster3
+    400026: Poster4
+    400028: Roof
+    400030: Stand
+    2300000: Banzai
+    2300002: BanzaiJAP
+    2300004: Figure
+    2300006: Figure001
+    2300008: Figure002
+    2300010: Figure003
+    2300012: Pillow
+    2300014: Pillow004
+    2300016: Pillow005
+    2300018: Poster
+    2300020: Poster2
+    2300022: Poster3
+    2300024: Poster4
+    2300026: Roof
+    2300028: Stand
+    3300000: Banzai
+    3300002: BanzaiJAP
+    3300004: Figure
+    3300006: Figure001
+    3300008: Figure002
+    3300010: Figure003
+    3300012: Pillow
+    3300014: Pillow004
+    3300016: Pillow005
+    3300018: Poster
+    3300020: Poster2
+    3300022: Poster3
+    3300024: Poster4
+    3300026: Roof
+    3300028: Stand
+    4300000: Banzai
+    4300002: BanzaiJAP
+    4300004: Figure
+    4300006: Figure001
+    4300008: Figure002
+    4300010: Figure003
+    4300012: Pillow
+    4300014: Pillow004
+    4300016: Pillow005
+    4300018: Poster
+    4300020: Poster2
+    4300022: Poster3
+    4300024: Poster4
+    4300026: Roof
+    4300028: Stand
   materials:
     importMaterials: 1
     materialName: 0
