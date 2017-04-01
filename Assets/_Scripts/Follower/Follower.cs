@@ -125,12 +125,12 @@ public class Follower : MonoBehaviour {
 	public void ReachTarget(Target target, Leader leader){
 		if(target == _currentTarget){
 			Loyalty += 2;
-			_followTarget._target = target.transform.position;
+			_followTarget._target = target.transform;
 		} else {
 			foreach(Follower.Type type in target._followerLoveTypes)
 				if(type == _type){
 					Loyalty++;
-					_followTarget._target = target.transform.position;
+					_followTarget._target = target.transform;
 				}
 			foreach(Follower.Type type in target._followerHateTypes)
 				if(type == _type){
@@ -146,7 +146,7 @@ public class Follower : MonoBehaviour {
 		DemandTarget(leader);
 	}
 	public void DemandTarget(Leader leader){
-		_followTarget._target = leader.transform.position;
+		_followTarget._target = leader.transform;
 
 		if(_unusedTargets.Count == 0)
 			_unusedTargets = GetPossibleTargetTier();
@@ -170,7 +170,7 @@ public class Follower : MonoBehaviour {
 		_leader = null;
 		_pit = true;
 		_pitPath = path;
-		_followTarget.SetTarget(path[_pitTarget]);
+		//_followTarget.SetTarget(path[_pitTarget]);
 	}
 
 	public void SetPossibleTargets(List<Target> tierOne, List<Target> tierTwo, List<Target> tierThree){
@@ -214,8 +214,8 @@ public class Follower : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(_pit){
-			if(_followTarget.GetAtTarget())
-				_followTarget.SetTarget(_pitPath[_pitTarget]);
+			//if(_followTarget.GetAtTarget())
+				//_followTarget.SetTarget(_pitPath[_pitTarget]);
 
 			if(++_pitTarget >= _pitPath.Count){
 				_pit = false;

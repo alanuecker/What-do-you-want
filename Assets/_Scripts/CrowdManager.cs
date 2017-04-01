@@ -317,7 +317,7 @@ public class CrowdManager : MonoBehaviour {
 
 				GameObject follower = (GameObject)Instantiate(_followers[i], randomPosition, Quaternion.identity);
 				follower.GetComponent<Follower>().SetPossibleTargets(tierOne, tierTwo, tierThree);
-				follower.GetComponent<FollowTarget>().SetTarget(_player.transform.position);
+				follower.GetComponent<FollowTarget>().SetTarget(_player.transform);
 
 				_allFollower.Add(follower.GetComponent<Follower>());
 			}
