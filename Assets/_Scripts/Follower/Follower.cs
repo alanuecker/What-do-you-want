@@ -19,6 +19,8 @@ public class Follower : MonoBehaviour {
 	public Sprite _dislike;
 	public Sprite _love;
 	public Sprite _hate;
+	public float _lowerLoyaltyMinTime = 5f;
+	public float _lowerLoyaltyMaxTime = 15f;
 	
 
 	private Leader _leader;
@@ -37,12 +39,16 @@ public class Follower : MonoBehaviour {
 			else if(value - _loyalty >= 1)
 				_speechBubble._targetIcon.sprite = _like;
 
-			else if(value - _loyalty <= -1)
+			else if(value - _loyalty <= -1){
 				_speechBubble._targetIcon.sprite = _dislike;
+				Debug.Log("Dislike");
+			}
 
 			else if(value - _loyalty <= -2)
 				_speechBubble._targetIcon.sprite = _hate;
 
+			StopCoroutine(LowerLoyalty());
+			StartCoroutine(LowerLoyalty());
 			_loyalty = value;
 			if(_loyalty < -2)
 				Remove();
@@ -89,15 +95,31 @@ public class Follower : MonoBehaviour {
 
 		Leader leader = collider.gameObject.GetComponent<Leader>();
 		if(leader != null){
-			foreach(Type targetType in leader._target._followerLoveTypes){
+			foreach(Target target in leader._targets){
+			foreach(Type targetType in target._followerLoveTypes){
 				if(targetType == _type){
 					Add(leader);
-					SetTarget(leader._target);
+					SetTarget(target);
 					_leader = leader;
 				}
 			}
+			}
 
 		}
+	}
+
+	
+
+	IEnumerator LowerLoyalty(){
+		yield return new WaitForSeconds(Random.Range(_lowerLoyaltyMinTime, _lowerLoyaltyMaxTime));
+		foreach(Target target in _leader._targets){
+				if(_currentTarget == target){
+					
+					yield return null;
+				}
+		}
+		Debug.Log("wrong target");
+		Loyalty--;
 	}
 
 	public void ReachTarget(Target target, Leader leader){
@@ -150,7 +172,7 @@ public class Follower : MonoBehaviour {
 	}
 
 	void Add(Leader leader){
-		_loyalty = -2;
+		Loyalty = -2;
 		_followTarget.enabled = true;
 		leader.GetComponent<Leader>().AddFollower(this);
 		_isFollowingPlayer = true;
