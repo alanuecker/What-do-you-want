@@ -48,6 +48,14 @@ public class Leader : MonoBehaviour {
 		_crowdManager.RemoveActiveFollower(follower);
 	}
 
+	public void AddDemandCount(Target.Type type){
+		_crowdManager.AddDemandCount(type);
+	}
+
+	public void RemoveDemandCount(Target.Type type){
+		_crowdManager.RemoveDemandCount(type);
+	}
+
 	public void SetAllFollowers(List<Follower> allFollower){
 		_followerAll = allFollower;
 	}
@@ -58,6 +66,9 @@ public class Leader : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		_followerAll = new List<Follower>();
+		_followerActive = new List<Follower>();
+		
 		_targets = new List<Target>();
 		_crowdManager = GameObject.FindGameObjectWithTag("CrowdManager").GetComponent<CrowdManager>();
 		AskForTargets();

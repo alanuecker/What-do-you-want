@@ -3,6 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Target : MonoBehaviour {
+
+	public enum Type{
+		bier,
+		klo,
+		wein, 
+		fleisch,
+		anime,
+		zelt,
+		ritual,
+		spielhalle,
+		opfer,
+		mob,
+		laser,
+		frieden
+	}
+
+	public Type _type;
+
 	public Follower.Type[] _followerLoveTypes;
 	public Follower.Type[] _followerHateTypes;
 	public Sprite _targetIcon;

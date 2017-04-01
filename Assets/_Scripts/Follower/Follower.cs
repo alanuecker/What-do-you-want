@@ -19,8 +19,8 @@ public class Follower : MonoBehaviour {
 	public Sprite _dislike;
 	public Sprite _love;
 	public Sprite _hate;
-	public float _lowerLoyaltyMinTime = 10f;
-	public float _lowerLoyaltyMaxTime = 30f;
+	public float _lowerLoyaltyMinTime = 5f;
+	public float _lowerLoyaltyMaxTime = 15f;
 	
 
 	private Leader _leader;
@@ -39,8 +39,10 @@ public class Follower : MonoBehaviour {
 			else if(value - _loyalty >= 1)
 				_speechBubble._targetIcon.sprite = _like;
 
-			else if(value - _loyalty <= -1)
+			else if(value - _loyalty <= -1){
 				_speechBubble._targetIcon.sprite = _dislike;
+				Debug.Log("Dislike");
+			}
 
 			else if(value - _loyalty <= -2)
 				_speechBubble._targetIcon.sprite = _hate;
@@ -97,8 +99,8 @@ public class Follower : MonoBehaviour {
 			foreach(Type targetType in target._followerLoveTypes){
 				if(targetType == _type){
 					Add(leader);
-					SetTarget(target);
 					_leader = leader;
+					SetTarget(target);
 				}
 			}
 			}
@@ -110,6 +112,13 @@ public class Follower : MonoBehaviour {
 
 	IEnumerator LowerLoyalty(){
 		yield return new WaitForSeconds(Random.Range(_lowerLoyaltyMinTime, _lowerLoyaltyMaxTime));
+		foreach(Target target in _leader._targets){
+				if(_currentTarget == target){
+					
+					yield return null;
+				}
+		}
+		Debug.Log("wrong target");
 		Loyalty--;
 	}
 
@@ -154,6 +163,7 @@ public class Follower : MonoBehaviour {
 	void SetTarget(Target target){
 		_speechBubble.TargetIcon = target._targetIcon;
 		_currentTarget = target;
+		_leader.AddDemandCount(target._type);
 	}
 
 	public void SetPossibleTargets(List<Target> tierOne, List<Target> tierTwo, List<Target> tierThree){
@@ -163,7 +173,7 @@ public class Follower : MonoBehaviour {
 	}
 
 	void Add(Leader leader){
-		_loyalty = -2;
+		Loyalty = -2;
 		_followTarget.enabled = true;
 		leader.GetComponent<Leader>().AddFollower(this);
 		_isFollowingPlayer = true;
@@ -172,6 +182,7 @@ public class Follower : MonoBehaviour {
 	void Remove(){
 		_followTarget.enabled = false;
 		_isFollowingPlayer = false;
+		_leader.RemoveDemandCount(_currentTarget._type);
 		_leader.RemoveFollower(this);
 	}
 	
