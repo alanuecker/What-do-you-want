@@ -99,8 +99,8 @@ public class Follower : MonoBehaviour {
 			foreach(Type targetType in target._followerLoveTypes){
 				if(targetType == _type){
 					Add(leader);
-					SetTarget(target);
 					_leader = leader;
+					SetTarget(target);
 				}
 			}
 			}
@@ -163,6 +163,7 @@ public class Follower : MonoBehaviour {
 	void SetTarget(Target target){
 		_speechBubble.TargetIcon = target._targetIcon;
 		_currentTarget = target;
+		_leader.AddDemandCount(target._type);
 	}
 
 	public void SetPossibleTargets(List<Target> tierOne, List<Target> tierTwo, List<Target> tierThree){
@@ -181,6 +182,7 @@ public class Follower : MonoBehaviour {
 	void Remove(){
 		_followTarget.enabled = false;
 		_isFollowingPlayer = false;
+		_leader.RemoveDemandCount(_currentTarget._type);
 		_leader.RemoveFollower(this);
 	}
 	
