@@ -11,7 +11,9 @@ public class Follower : MonoBehaviour {
 	}
 
 	public Type _type;
-	public Target[] _possibleTargets;
+	public Target[] _possibleTargetsTierOne;
+	public Target[] _possibleTargetsTierTwo;
+	public Target[] _possibleTargetsTierThree;
 
 	public Sprite _like;
 	public Sprite _dislike;
@@ -20,6 +22,8 @@ public class Follower : MonoBehaviour {
 	
 
 	private float _loyalty;
+	private float _anger;
+	private int _demandLevel;
 	private SpeechBubble _speechBubble;
 	private Target _currentTarget;
 	private List<Target> _unusedTargets;
@@ -47,12 +51,49 @@ public class Follower : MonoBehaviour {
 			return _loyalty;
 		}
 	}
+
+	private float Anger{
+		set{
+			if(value - _anger >= 10)
+				Demand = 2;
+			else if(value - _anger >= 5)
+				Demand = 1;
+			else
+				Demand = 0;
+		}
+		get{
+			return _anger;
+		}
+	}
+
+	private int Demand{
+		set{
+			if(value != _demandLevel){
+				_demandLevel = value;
+				switch(_demandLevel){
+					case 0: 
+						_unusedTargets = new List<Target>(_possibleTargetsTierOne);
+						break;
+					case 1: 
+						_unusedTargets = new List<Target>(_possibleTargetsTierTwo);
+						break;
+					case 2: 
+						_unusedTargets = new List<Target>(_possibleTargetsTierThree);
+						break;
+				}
+			}
+		}
+		get{
+			return _demandLevel;
+		}
+	}
+
 	// Use this for initialization
 	void Awake () {
 		_followTarget = GetComponent<FollowTarget>();
 		_isFollowingPlayer = _followTarget.enabled;
 
-		_unusedTargets = new List<Target>(_possibleTargets);
+		_unusedTargets = new List<Target>(_possibleTargetsTierOne);
 		_speechBubble = GetComponentInChildren<SpeechBubble>();
 	}
 
@@ -75,11 +116,13 @@ public class Follower : MonoBehaviour {
 	public void ReachTarget(Target target, Leader leader){
 		if(target == _currentTarget){
 			Loyalty += 2;
+			Anger += 2;
 			_followTarget._target = target.transform;
 		} else {
 			foreach(Follower.Type type in target._followerLoveTypes)
 				if(type == _type){
 					Loyalty++;
+					Anger++;
 					_followTarget._target = target.transform;
 				}
 			foreach(Follower.Type type in target._followerHateTypes)
@@ -99,7 +142,7 @@ public class Follower : MonoBehaviour {
 		_followTarget._target = leader.transform;
 
 		if(_unusedTargets.Count == 0)
-			_unusedTargets = new List<Target>(_possibleTargets);
+			_unusedTargets = GetPossibleTargetTier();
 		
 		Target randomTarget = _unusedTargets[Random.Range(0, _unusedTargets.Count)];
 		_unusedTargets.Remove(randomTarget);
@@ -110,6 +153,12 @@ public class Follower : MonoBehaviour {
 	void SetTarget(Target target){
 		_speechBubble.TargetIcon = target._targetIcon;
 		_currentTarget = target;
+	}
+
+	public void SetPossibleTargets(Target[] tierOne, Target[] tierTwo, Target[] tierThree){
+		_possibleTargetsTierOne = tierOne;
+		_possibleTargetsTierTwo = tierTwo;
+		_possibleTargetsTierThree = tierThree;
 	}
 
 	void Add(Leader leader){
@@ -125,6 +174,20 @@ public class Follower : MonoBehaviour {
 		_isFollowingPlayer = false;
 	}
 	
+	List<Target> GetPossibleTargetTier(){
+		switch(_demandLevel){
+			case 0: 
+				return new List<Target>(_possibleTargetsTierOne);
+			case 1: 
+				return new List<Target>(_possibleTargetsTierTwo);
+			case 2: 
+				return new List<Target>(_possibleTargetsTierThree);
+		}
+
+		//default shouldn't be reached
+		return new List<Target>(_possibleTargetsTierOne);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		
