@@ -5,8 +5,9 @@ using UnityEngine;
 public class Leader : MonoBehaviour {
 	public List<Follower> _followerActive;
 	public List<Follower> _followerAll;
-	public Target _target;
+	public List<Target> _targets;
 	public Target[] _possibleTargets;
+	public CrowdManager _crowdManager;
 
 	private Transform _lastTarget;
 
@@ -15,6 +16,20 @@ public class Leader : MonoBehaviour {
 			follower.DemandTarget(this);
 	}
 
+	IEnumerator UpdateTarget(){
+		WaitForSeconds wait = new WaitForSeconds(1);
+		Vector3 oldPos = transform.position; 
+		while(true){
+			yield return wait;
+			_targets = new List<Target>();
+			foreach(Target target in _crowdManager._targets){
+				float angle = Vector3.Angle(oldPos - transform.position, oldPos - target.transform.position);
+				if(angle < 35f){
+					_targets.Add(target);
+				} 
+			}
+		}
+	}
 	public void ReachTarget(Target target){
 		if(target == _lastTarget)
 			return;
@@ -38,7 +53,9 @@ public class Leader : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		_targets = new List<Target>();
 		AskForTargets();
+		StartCoroutine(UpdateTarget());
 	}
 	
 	// Update is called once per frame

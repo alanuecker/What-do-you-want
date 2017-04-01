@@ -19,6 +19,8 @@ public class Follower : MonoBehaviour {
 	public Sprite _dislike;
 	public Sprite _love;
 	public Sprite _hate;
+	public float _lowerLoyaltyMinTime = 10f;
+	public float _lowerLoyaltyMaxTime = 30f;
 	
 
 	private float _loyalty;
@@ -43,6 +45,8 @@ public class Follower : MonoBehaviour {
 			else if(value - _loyalty <= -2)
 				_speechBubble._targetIcon.sprite = _hate;
 
+			StopCoroutine(LowerLoyalty());
+			StartCoroutine(LowerLoyalty());
 			_loyalty = value;
 			if(_loyalty < -2)
 				Remove();
@@ -103,14 +107,23 @@ public class Follower : MonoBehaviour {
 
 		Leader leader = collider.gameObject.GetComponent<Leader>();
 		if(leader != null){
-			foreach(Type targetType in leader._target._followerLoveTypes){
+			foreach(Target target in leader._targets){
+			foreach(Type targetType in target._followerLoveTypes){
 				if(targetType == _type){
 					Add(leader);
-					SetTarget(leader._target);
+					SetTarget(target);
 				}
+			}
 			}
 
 		}
+	}
+
+	
+
+	IEnumerator LowerLoyalty(){
+		yield return new WaitForSeconds(Random.Range(_lowerLoyaltyMinTime, _lowerLoyaltyMaxTime));
+		Loyalty--;
 	}
 
 	public void ReachTarget(Target target, Leader leader){
