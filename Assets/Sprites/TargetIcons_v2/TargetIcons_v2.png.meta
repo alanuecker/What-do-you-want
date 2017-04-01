@@ -1,21 +1,21 @@
 fileFormatVersion: 2
 guid: e11c7ced85884ec4fb4a4528f0093fe1
-timeCreated: 1491059443
+timeCreated: 1491080481
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: TargetIcons_v2_0
-    21300002: TargetIcons_v2_1
-    21300004: TargetIcons_v2_2
-    21300006: TargetIcons_v2_3
-    21300008: TargetIcons_v2_4
-    21300010: TargetIcons_v2_5
-    21300012: TargetIcons_v2_6
+    21300000: IconRitual
+    21300002: IconLaser
+    21300004: IconFrieden
+    21300006: IconBoxen
+    21300008: IconArcade
+    21300010: IconLiebe
+    21300012: IconManga
     21300014: TargetIcons_v2_7
-    21300016: TargetIcons_v2_8
-    21300018: TargetIcons_v2_9
-    21300020: TargetIcons_v2_10
-    21300022: TargetIcons_v2_11
+    21300016: IconBeer
+    21300018: IconPinkeln
+    21300020: IconWurst
+    21300022: IconWein
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -65,7 +65,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TargetIcons_v2_0
+      name: IconRitual
       rect:
         serializedVersion: 2
         x: 0
@@ -73,12 +73,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_1
+      name: IconLaser
       rect:
         serializedVersion: 2
         x: 512
@@ -86,12 +86,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_2
+      name: IconFrieden
       rect:
         serializedVersion: 2
         x: 1024
@@ -99,12 +99,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_3
+      name: IconBoxen
       rect:
         serializedVersion: 2
         x: 1536
@@ -112,12 +112,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_4
+      name: IconArcade
       rect:
         serializedVersion: 2
         x: 0
@@ -125,12 +125,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_5
+      name: IconLiebe
       rect:
         serializedVersion: 2
         x: 512
@@ -138,12 +138,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_6
+      name: IconManga
       rect:
         serializedVersion: 2
         x: 1024
@@ -151,7 +151,7 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -164,12 +164,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_8
+      name: IconBeer
       rect:
         serializedVersion: 2
         x: 0
@@ -177,12 +177,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_9
+      name: IconPinkeln
       rect:
         serializedVersion: 2
         x: 512
@@ -190,12 +190,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_10
+      name: IconWurst
       rect:
         serializedVersion: 2
         x: 1024
@@ -203,12 +203,12 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: TargetIcons_v2_11
+      name: IconWein
       rect:
         serializedVersion: 2
         x: 1536
@@ -216,7 +216,7 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
