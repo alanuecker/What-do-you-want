@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Leader : MonoBehaviour {
-	public List<Follower> _followerActive;
-	public List<Follower> _followerAll;
 	public List<Target> _targets;
 	public Target[] _possibleTargets;
 	public CrowdManager _crowdManager;
 
-	private Transform _lastTarget;
+	private Target _lastTarget;
 
 
 	void AskForTargets(){
-		foreach(Follower follower in _followerActive)
+		foreach(Follower follower in _crowdManager.ActiveFollower)
 			follower.DemandTarget(this);
 	}
 
@@ -34,9 +32,9 @@ public class Leader : MonoBehaviour {
 	public void ReachTarget(Target target){
 		if(target == _lastTarget)
 			return;
-
-		_lastTarget = target.transform;
-		foreach(Follower follower in _followerActive)
+		
+		_lastTarget = target;
+		foreach(Follower follower in _crowdManager.ActiveFollower)
 			follower.ReachTarget(target, this);
 	}
 
@@ -56,19 +54,8 @@ public class Leader : MonoBehaviour {
 		_crowdManager.RemoveDemandCount(type);
 	}
 
-	public void SetAllFollowers(List<Follower> allFollower){
-		_followerAll = allFollower;
-	}
-
-	public void SetActiveFollowers(List<Follower> activeFollower){
-		_followerActive = activeFollower;
-	}
-
 	// Use this for initialization
-	void Start () {
-		_followerAll = new List<Follower>();
-		_followerActive = new List<Follower>();
-		
+	void Start () {		
 		_targets = new List<Target>();
 		_crowdManager = GameObject.FindGameObjectWithTag("CrowdManager").GetComponent<CrowdManager>();
 		AskForTargets();
