@@ -864,7 +864,7 @@ GameObject:
   - 114: {fileID: 1350181688}
   m_Layer: 8
   m_Name: CrowdManager
-  m_TagString: Untagged
+  m_TagString: CrowdManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -880,6 +880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351c328fe46ad3c44af4baf960359f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnRange: 40
   _targets:
   - {fileID: 331496231}
   - {fileID: 189601990}
@@ -893,12 +894,15 @@ MonoBehaviour:
   - {fileID: 1489575460}
   - {fileID: 668698198}
   - {fileID: 1213674464}
+  targetTierOne: 00000000010000000200000003000000
+  targetTierTwo: 04000000050000000600000007000000
+  targetTierThree: 08000000090000000a0000000b000000
   _followers:
   - {fileID: 1000013150635538, guid: 4081f34097ca6af4097aa3007cadf3c8, type: 2}
   - {fileID: 1000010588618698, guid: 7e48dbdc564a2b844a2addb5a89e0d5d, type: 2}
   - {fileID: 1000012498655942, guid: 24b35e9735942c141a8090ed3c51dea9, type: 2}
   - {fileID: 1000013382765364, guid: 6aa149753c27f9342afffbf8fd4ae1e8, type: 2}
-  _numberOf: f4010000f4010000f4010000f4010000
+  _numberOf: 64000000640000006400000064000000
   assisTierOne: 000000000100000003000000
   assisTierTwo: 0600000007000000
   assisTierThree: 09000000
