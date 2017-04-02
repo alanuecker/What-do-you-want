@@ -686,7 +686,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013920804850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.73, y: 0.81455374, z: -31.11}
+  m_LocalPosition: {x: 54.11, y: 0.81455374, z: -28.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1416,10 +1416,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 2
-  _followerLoveTypes: 0000000003000000
-  _followerHateTypes: 0100000002000000
+  _followerLoveTypes: 010000000200000003000000
+  _followerHateTypes: 00000000
   _targetIcon: {fileID: 21300022, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
   _directionIndicator: {fileID: 212000010306499190}
+  _demandClips: []
 --- !u!135 &135000010352474088
 SphereCollider:
   m_ObjectHideFlags: 1

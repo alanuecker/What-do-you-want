@@ -2570,8 +2570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 3
-  _followerLoveTypes: 0200000003000000
-  _followerHateTypes: 0000000001000000
+  _followerLoveTypes: 000000000100000002000000
+  _followerHateTypes: 03000000
   _targetIcon: {fileID: 21300020, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
   _directionIndicator: {fileID: 212000012886470712}
   _demandClips:
