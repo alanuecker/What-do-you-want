@@ -1,17 +1,37 @@
 fileFormatVersion: 2
-guid: 353752306a4e1984db21b7766318e8b5
-timeCreated: 1491085998
+guid: 729acfe2c79c6344f9df72a9c9753a2f
+timeCreated: 1491140203
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Cylinder001
-    100002: //RootNode
-    400000: Cylinder001
-    400002: //RootNode
-    2300000: Cylinder001
-    3300000: Cylinder001
-    4300000: Cylinder001
+    100000: Ancor
+    100002: Chain
+    100004: Entrance
+    100006: //RootNode
+    100008: LogoSign
+    100010: Text_What
+    400000: Ancor
+    400002: Chain
+    400004: Entrance
+    400006: //RootNode
+    400008: LogoSign
+    400010: Text_What
+    2300000: Ancor
+    2300002: Chain
+    2300004: Entrance
+    2300006: LogoSign
+    2300008: Text_What
+    3300000: Ancor
+    3300002: Chain
+    3300004: Entrance
+    3300006: LogoSign
+    3300008: Text_What
+    4300000: Ancor
+    4300002: Chain
+    4300004: Entrance
+    4300006: LogoSign
+    4300008: Text_What
   materials:
     importMaterials: 1
     materialName: 0

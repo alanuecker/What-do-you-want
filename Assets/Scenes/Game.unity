@@ -7908,7 +7908,7 @@ MonoBehaviour:
   _followerPercentages: {fileID: 1551072830}
   _whatClips: []
   _endScreenAnimator: {fileID: 380874718}
-  _amountToWin: 10
+  _amountToWin: 100
   _newsPaper:
   - {fileID: 21300000, guid: 9e74c7ed9efebf740849b3db492cf4cf, type: 3}
   - {fileID: 21300000, guid: e7e3e0726c6fbe340b2d23b394835cc9, type: 3}
