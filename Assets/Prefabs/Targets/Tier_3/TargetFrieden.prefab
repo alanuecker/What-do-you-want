@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000010262988282
 GameObject:
   m_ObjectHideFlags: 1
@@ -3295,7 +3295,9 @@ MonoBehaviour:
   _followerHateTypes: 010000000200000000000000
   _targetIcon: {fileID: 21300004, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
   _directionIndicator: {fileID: 212000013439835078}
-  _demandClips: []
+  _demandClips:
+  - {fileID: 8300000, guid: 4ae08bd39a1766349b752ab58dad6f4a, type: 3}
+  - {fileID: 8300000, guid: 99ab59b31fd05fd47bef250be909296d, type: 3}
 --- !u!135 &135000013197792194
 SphereCollider:
   m_ObjectHideFlags: 1
