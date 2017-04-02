@@ -90,7 +90,6 @@ public class CrowdManager : MonoBehaviour {
 					break;
 
 				Vector3 pos = this.RandomCircle(_center, 4.0f, i);
-				Quaternion rot = Quaternion.FromToRotation(Vector3.forward, _center-pos);
 				NavMeshHit hit;
 
 				if(NavMesh.SamplePosition(pos, out hit, 2.0f, NavMesh.AllAreas)){
