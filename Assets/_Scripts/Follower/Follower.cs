@@ -146,20 +146,18 @@ public class Follower : MonoBehaviour {
 				}
 		}
 
-		StartCoroutine(WaitAndDemandTarget(new WaitForSeconds(3f), leader));
+		StartCoroutine(WaitAndDemandTarget(new WaitForSeconds(3f), leader, target));
 	}
 
-	IEnumerator WaitAndDemandTarget(WaitForSeconds wait, Leader leader){
+	IEnumerator WaitAndDemandTarget(WaitForSeconds wait, Leader leader, Target _lastTarget){
 		yield return wait;
-		DemandTarget(leader);
+		DemandTarget(leader, _lastTarget);
 	}
-	public void DemandTarget(Leader leader){
-		leader.RemoveDemandCount(_currentTarget._type);
+	public void DemandTarget(Leader leader, Target _lastTarget){
 		_followTarget._target = leader.transform;
 
-		if(_unusedTargets.Count == 0)
-			_unusedTargets = GetPossibleTargetTier();
-		
+		_unusedTargets = GetPossibleTargetTier();
+		_unusedTargets.Remove(_lastTarget);
 		Target randomTarget = _unusedTargets[Random.Range(0, _unusedTargets.Count)];
 		_unusedTargets.Remove(randomTarget);
 
