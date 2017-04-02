@@ -2178,6 +2178,117 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: f7132d651ad5d1f40af49f09ebdc7b7e, type: 3}
+--- !u!1001 &380874717
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013201948186, guid: 615fe25ad3ea0974e974a7eb50533d81,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 615fe25ad3ea0974e974a7eb50533d81, type: 2}
+  m_IsPrefabParent: 0
+--- !u!95 &380874718 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95000014237513288, guid: 615fe25ad3ea0974e974a7eb50533d81,
+    type: 2}
+  m_PrefabInternal: {fileID: 380874717}
+--- !u!114 &380874720 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000012686926534, guid: 615fe25ad3ea0974e974a7eb50533d81,
+    type: 2}
+  m_PrefabInternal: {fileID: 380874717}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &392229774
 Prefab:
   m_ObjectHideFlags: 0
@@ -7812,6 +7923,14 @@ MonoBehaviour:
   _crowdManager: {fileID: 0}
   _followerPercentages: {fileID: 1551072830}
   _whatClips: []
+  _endScreenAnimator: {fileID: 380874718}
+  _amountToWin: 10
+  _newsPaper:
+  - {fileID: 21300000, guid: 9e74c7ed9efebf740849b3db492cf4cf, type: 3}
+  - {fileID: 21300000, guid: e7e3e0726c6fbe340b2d23b394835cc9, type: 3}
+  - {fileID: 21300000, guid: c787fb9b089aca747a60c889d42be293, type: 3}
+  - {fileID: 21300000, guid: 718c8d8f3e7e2b249a7f5157bc23ce80, type: 3}
+  _newspaperImage: {fileID: 380874720}
 --- !u!114 &1490707958
 MonoBehaviour:
   m_ObjectHideFlags: 0
