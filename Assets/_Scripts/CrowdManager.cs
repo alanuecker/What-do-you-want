@@ -35,6 +35,8 @@ public class CrowdManager : MonoBehaviour {
 	public int[] hippiesTierTwo;
 	public int[] hippiesTierThree;
 
+	public GameObject[] convertParticles;
+
 	private Transform _player;
 	private List<Follower> _allFollower = new List<Follower>();
 	private List<Follower> _activeFollower = new List<Follower>();
@@ -300,7 +302,7 @@ public class CrowdManager : MonoBehaviour {
 				_demandCount[type]--;
 	}
 
-	void CreateNewActiveFollower(Follower.Type type, Vector3 pos){
+	public void CreateNewActiveFollower(Follower.Type type, Vector3 pos, Leader leader){
 		List<Target> tierOne = new List<Target>();
 			List<Target> tierTwo = new List<Target>();
 			List<Target> tierThree = new List<Target>();
@@ -320,6 +322,11 @@ public class CrowdManager : MonoBehaviour {
 		follower.GetComponent<FollowTarget>().SetTarget(_player.transform);
 		
 		_allFollower.Add(follower.GetComponent<Follower>());
+
+		follower.GetComponent<Follower>().Add(leader);
+
+		if(convertParticles.Length > (int)type)
+			Destroy(Instantiate(convertParticles[(int)type], pos, Quaternion.identity), 5f);
 	}
 
 	void Start () {
