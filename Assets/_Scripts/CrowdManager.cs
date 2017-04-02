@@ -386,7 +386,7 @@ public class CrowdManager : MonoBehaviour {
 
 		List<Follower> pitPeople = new List<Follower>();
 
-		for(int x = 0; x < 50; x++){ 
+		for(int x = 0; x < 20; x++){ 
 			Follower fol = _allFollower[Random.Range(0, _allFollower.Count)];
 			if(!pitPeople.Contains(fol))
 				pitPeople.Add(fol);
