@@ -7,7 +7,9 @@ public class SpeechBubbleSpawner : MonoBehaviour {
 
 	public Sprite TargetIcon{
 		set {
-			(Instantiate(_prefab, transform.position, Quaternion.Euler(45,45,0)) as GameObject).GetComponent<SpeechBubble>().Icon = value;
+			GameObject instance = (Instantiate(_prefab, transform.position + Vector3.up, Quaternion.Euler(45,45,0)) as GameObject);
+			instance.GetComponent<SpeechBubble>().Icon = value;
+			instance.transform.SetParent(transform);
 		}
 	}
 }

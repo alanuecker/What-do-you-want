@@ -30,17 +30,17 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 3.68, y: 0.157, z: 0.57}
+        value: {x: 0, y: 0.157, z: 0}
         inSlope: {x: 0, y: 0.584, z: 0}
         outSlope: {x: 0, y: 0.584, z: 0}
         tangentMode: 0
       - time: 0.25
-        value: {x: 3.68, y: 0.303, z: 0.57}
+        value: {x: 0, y: 0.303, z: 0}
         inSlope: {x: 0, y: -0.1061818, z: 0}
         outSlope: {x: 0, y: -0.1061818, z: 0}
         tangentMode: 0
       - time: 0.43333334
-        value: {x: 3.68, y: 0.157, z: 0.57}
+        value: {x: 0, y: 0.157, z: 0}
         inSlope: {x: 0, y: -0.7963636, z: 0}
         outSlope: {x: 0, y: -0.7963636, z: 0}
         tangentMode: 0
@@ -208,31 +208,6 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 3.68
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.25
-        value: 3.68
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.43333334
-        value: 3.68
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.x
-    path: 
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
         value: 0.157
         inSlope: 0.584
         outSlope: 0.584
@@ -251,31 +226,6 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: 
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0.57
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.25
-        value: 0.57
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.43333334
-        value: 0.57
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalPosition.z
     path: 
     classID: 4
     script: {fileID: 0}

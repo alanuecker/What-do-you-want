@@ -37,7 +37,7 @@ public class Follower : MonoBehaviour {
 	private List<Vector3> _pitPath;
 	private float Loyalty{
 		set {
-			if(value - _loyalty >= 2)
+			if(value - _loyalty >= 3)
 				_speechBubble.TargetIcon = _love;
 			else if(value - _loyalty >= 1)
 				_speechBubble.TargetIcon = _like;
@@ -46,12 +46,13 @@ public class Follower : MonoBehaviour {
 				_speechBubble.TargetIcon = _dislike;
 			}
 
-			else if(value - _loyalty <= -2)
+			else if(value - _loyalty <= -3)
 				_speechBubble.TargetIcon = _hate;
 
-			StopCoroutine(LowerLoyalty());
+			StopCoroutine(LowerLoyalty(null));
+			StartCoroutine(LowerLoyalty(new WaitForSeconds(Random.Range(10, 30))));
 			_loyalty = value;
-			if(_loyalty < -2)
+			if(_loyalty < -4)
 				Remove();
 		}
 		get {
@@ -111,8 +112,8 @@ public class Follower : MonoBehaviour {
 		}
 	}
 
-	IEnumerator LowerLoyalty(){
-		yield return new WaitForSeconds(Random.Range(_lowerLoyaltyMinTime, _lowerLoyaltyMaxTime));
+	IEnumerator LowerLoyalty(WaitForSeconds wait){
+		yield return wait;
 		foreach(Target target in _leader._targets){
 				if(_currentTarget == target){
 					
@@ -124,17 +125,17 @@ public class Follower : MonoBehaviour {
 
 	public void ReachTarget(Target target, Leader leader){
 		if(target == _currentTarget){
-			Loyalty += 2;
+			Loyalty += 3;
 			_followTarget._target = target.transform;
 		} else {
-			foreach(Follower.Type type in target._followerLoveTypes)
+			/*foreach(Follower.Type type in target._followerLoveTypes)
 				if(type == _type){
 					Loyalty++;
 					_followTarget._target = target.transform;
-				}
+				}*/
 			foreach(Follower.Type type in target._followerHateTypes)
 				if(type == _type){
-					Loyalty -= 2;
+					Loyalty -= 3;
 				}
 		}
 
@@ -180,16 +181,15 @@ public class Follower : MonoBehaviour {
 	}
 
 	void Add(Leader leader){
-		_loyalty = -2;
-		StopCoroutine(LowerLoyalty());
-		StartCoroutine(LowerLoyalty());
+		StopCoroutine(LowerLoyalty(null));
+		StartCoroutine(LowerLoyalty(new WaitForSeconds(Random.Range(5, 10))));
 		_followTarget.enabled = true;
 		leader.GetComponent<Leader>().AddFollower(this);
 		_isFollowingPlayer = true;
 	}
 
 	IEnumerator Remove(){
-		StopCoroutine(LowerLoyalty());
+		StopCoroutine(LowerLoyalty(null));
 		yield return new WaitForFixedUpdate();
 		_followTarget.enabled = false;
 		_isFollowingPlayer = false;

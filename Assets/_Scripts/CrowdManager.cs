@@ -109,6 +109,18 @@ public class CrowdManager : MonoBehaviour {
 	public List<Follower> ActiveFollower{
 		get { return _activeFollower; }
 	}
+	public int AssiCount{
+		get { return _activeAssis.Count; }
+	}
+	public int HippieCount{
+		get { return _activeHippies.Count; }
+	}
+	public int NerdCount{
+		get { return _activeNerds.Count; }
+	}
+	public int GothCount{
+		get { return _activeGoths.Count; }
+	}
 	// Use this for initialization
 	void Awake (){
 		_tierOne.Add(assisTierOne);
@@ -307,7 +319,7 @@ public class CrowdManager : MonoBehaviour {
 
 			for(int j = 0; j < _totalAmount/4; j++){
 				NavMeshHit hit;
-				Vector3 randomPosition = new Vector3(Random.Range(_spawnCenter.position.x -_spawnRange, _spawnCenter.position.x + _spawnRange + 1), Random.Range(_spawnCenter.position.y - 4, _spawnCenter.position.y + 2), Random.Range(_spawnCenter.position.z -_spawnRange, _spawnCenter.position.z + _spawnRange + 1));
+				Vector3 randomPosition = new Vector3(Random.Range(_spawnCenter.position.x -_spawnRange, _spawnCenter.position.x + _spawnRange + 1), Random.Range(_spawnCenter.position.y - 25, _spawnCenter.position.y + 12), Random.Range(_spawnCenter.position.z -_spawnRange, _spawnCenter.position.z + _spawnRange + 1));
 				if(NavMesh.SamplePosition(randomPosition, out hit, 10.0f, NavMesh.AllAreas)){
 					randomPosition = hit.position;
 				}else{
@@ -322,11 +334,11 @@ public class CrowdManager : MonoBehaviour {
 				_allFollower.Add(follower.GetComponent<Follower>());
 			}
 
-					List<Follower> pitPeople = new List<Follower>();
+					/*List<Follower> pitPeople = new List<Follower>();
 
 		for(int x = 0; x < 20; x++){
 			pitPeople.Add(_allFollower[Random.Range(0, _allFollower.Count)]);
-		}
+		}*/
 
 		//MoshPit firstPit = new MoshPit(_allFollower[Random.Range(0, _allFollower.Count)], pitPeople);
 		}
