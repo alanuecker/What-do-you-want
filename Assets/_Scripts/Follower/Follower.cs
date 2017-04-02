@@ -98,16 +98,19 @@ public class Follower : MonoBehaviour {
 		Leader leader = collider.gameObject.GetComponent<Leader>();
 		if(leader != null){
 			foreach(Target target in leader._targets){
-			foreach(Type targetType in target._followerLoveTypes){
-				if(targetType == _type){
-					if(Random.value > _chanceToFollow)
-						return;
-					Add(leader);
-					_leader = leader;
-					SetTarget(target);
-					return;
+				foreach(Type targetType in target._followerLoveTypes){
+					if(targetType == _type){
+						//check if target is in active demand tier
+						if(CheckTargetInDemands(target._type)){
+							if(Random.value > _chanceToFollow)
+								return;
+							Add(leader);
+							_leader = leader;
+							SetTarget(target);
+							return;
+						}
+					}
 				}
-			}
 			}
 		}
 	}
@@ -209,6 +212,32 @@ public class Follower : MonoBehaviour {
 
 		//default shouldn't be reached
 		return new List<Target>(_possibleTargetsTierOne);
+	}
+
+	bool CheckTargetInDemands(Target.Type type){
+
+		switch(_demandLevel){
+			case 0: 
+				foreach(Target target in _possibleTargetsTierOne){
+					if(target._type == type)
+						return true;
+				}
+				break;
+			case 1: 
+				foreach(Target target in _possibleTargetsTierTwo){
+					if(target._type == type)
+						return true;
+				}
+				break;
+			case 2: 
+				foreach(Target target in _possibleTargetsTierThree){
+					if(target._type == type)
+						return true;
+				}
+				break;
+		}
+
+		return false;
 	}
 
 	// Update is called once per frame
