@@ -61,10 +61,14 @@ public class CrowdManager : MonoBehaviour {
 
 	private Dictionary<Target.Type, int> _demandCount = new Dictionary<Target.Type, int>();
 
+	private MoshPit _firstPit;
+
 	public class MoshPit{
 		Vector3 _center;
 		List<Follower> _pitPeople;
 		List<Vector3> _path = new List<Vector3>();
+
+		bool _started;
 
 		public MoshPit(List<Follower> pitPeople){
 			_pitPeople = pitPeople;
@@ -75,21 +79,21 @@ public class CrowdManager : MonoBehaviour {
 		public MoshPit(){
 			_pitPeople = new List<Follower>();
 			_path = new List<Vector3>();
-			_center = new Vector3(0, -9f, 0);
+			_center = new Vector3(-4.0f, -9f, -1.0f);
 		}
 
 		void Init(){
 			int failed = 0;
 
-			for (int i = 0; i < 6; i++){
+			for (int i = 0; i < 10; i++){
 				if(failed > 10)
 					break;
 
-				Vector3 pos = this.RandomCircle(_center, 3.0f, i);
+				Vector3 pos = this.RandomCircle(_center, 4.0f, i);
 				Quaternion rot = Quaternion.FromToRotation(Vector3.forward, _center-pos);
 				NavMeshHit hit;
 
-				if(NavMesh.SamplePosition(pos, out hit, 1.0f, NavMesh.AllAreas)){
+				if(NavMesh.SamplePosition(pos, out hit, 2.0f, NavMesh.AllAreas)){
 					_path.Add(hit.position);
 				}else{
 					i--;
@@ -97,14 +101,27 @@ public class CrowdManager : MonoBehaviour {
 					continue;
 				}
 			}
+		}
 
+		public void Start(){
 			foreach(Follower follower in _pitPeople){
 				follower.MoshPit(_path);
+			}
+
+			_started = true;
+		}
+
+		public void Stop(){
+			if(_started){
+				foreach(Follower follower in _pitPeople){
+					follower.StopMoshPit();
+				}
+				_started = false;
 			}
 		}
 
 		Vector3 RandomCircle (Vector3 center, float radius, int i){
-			float ang = i * 360/6;
+			float ang = i * 360/10;
 			Vector3 pos;
 			pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
 			pos.y = center.y;
@@ -386,22 +403,16 @@ public class CrowdManager : MonoBehaviour {
 
 		List<Follower> pitPeople = new List<Follower>();
 
-		for(int x = 0; x < 20; x++){ 
-			Follower fol = _allFollower[Random.Range(0, _allFollower.Count)];
-			if(!pitPeople.Contains(fol))
-				pitPeople.Add(fol);
-			else{
-				x--;
-				continue;
-			}
-		}
+		pitPeople = _allFollower;
 
-		print( pitPeople.Count + " pit people");
-		MoshPit firstPit = new MoshPit(pitPeople);
+		_firstPit = new MoshPit(pitPeople);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(Input.GetKeyDown(KeyCode.N))
+			_firstPit.Start();
+		if(Input.GetKeyDown(KeyCode.B))
+			_firstPit.Stop();
 	}
 }
