@@ -30,11 +30,12 @@ public class Follower : MonoBehaviour {
 	private Target _currentTarget;
 	private List<Target> _unusedTargets;
 	private FollowTarget _followTarget;
+	private FollowMoshPit _followMoshPit;
 	private bool _isFollowingPlayer;
 
-	private int _pitTarget;
+
 	private bool _pit;
-	private List<Vector3> _pitPath;
+
 	private float Loyalty{
 		set {
 			if(value - _loyalty >= 3)
@@ -88,6 +89,8 @@ public class Follower : MonoBehaviour {
 	void Awake () {
 		_followTarget = GetComponent<FollowTarget>();
 		_isFollowingPlayer = _followTarget.enabled;
+
+		_followMoshPit = GetComponent<FollowMoshPit>();
 
 		_unusedTargets = new List<Target>(_possibleTargetsTierOne);
 		_speechBubble = GetComponentInChildren<SpeechBubbleSpawner>();
@@ -152,6 +155,7 @@ public class Follower : MonoBehaviour {
 		DemandTarget(leader);
 	}
 	public void DemandTarget(Leader leader){
+		leader.RemoveDemandCount(_currentTarget._type);
 		_followTarget._target = leader.transform;
 
 		if(_unusedTargets.Count == 0)
@@ -189,10 +193,10 @@ public class Follower : MonoBehaviour {
 	}
 
 	public void MoshPit(List<Vector3> path){
+		_followTarget.enabled = false;
+		_followMoshPit.enabled = true;
 		_leader = null;
-		_pit = true;
-		_pitPath = path;
-		//_followTarget.SetTarget(path[_pitTarget]);
+		_followMoshPit.SetPath(path);
 	}
 
 	public void SetPossibleTargets(List<Target> tierOne, List<Target> tierTwo, List<Target> tierThree){
@@ -205,6 +209,7 @@ public class Follower : MonoBehaviour {
 		StopCoroutine(LowerLoyalty(null));
 		StartCoroutine(LowerLoyalty(new WaitForSeconds(Random.Range(5, 10))));
 		_followTarget.enabled = true;
+		_followMoshPit.enabled = false;
 		leader.GetComponent<Leader>().AddFollower(this);
 		_isFollowingPlayer = true;
 	}
@@ -260,14 +265,5 @@ public class Follower : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(_pit){
-			//if(_followTarget.GetAtTarget())
-				//_followTarget.SetTarget(_pitPath[_pitTarget]);
-
-			if(++_pitTarget >= _pitPath.Count){
-				_pit = false;
-				SetDemand(_demandLevel);
-			}
-		}
 	}
 }

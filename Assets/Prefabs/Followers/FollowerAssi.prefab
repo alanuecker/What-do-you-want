@@ -175,6 +175,7 @@ GameObject:
   - 114: {fileID: 114000010661625332}
   - 114: {fileID: 114000010877267272}
   - 135: {fileID: 135000012621657134}
+  - 114: {fileID: 114000013544101302}
   m_Layer: 0
   m_Name: FollowerAssi
   m_TagString: Untagged
@@ -746,6 +747,17 @@ MonoBehaviour:
   _hate: {fileID: 21300000, guid: e870b0f0d168aeb45bce3778fdd4cc60, type: 3}
   _lowerLoyaltyMinTime: 6
   _lowerLoyaltyMaxTime: 12
+--- !u!114 &114000013544101302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013150635538}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5525354940a82e74c9c8d8391c2a9314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135000012621657134
 SphereCollider:
   m_ObjectHideFlags: 1

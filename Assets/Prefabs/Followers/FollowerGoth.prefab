@@ -122,6 +122,7 @@ GameObject:
   - 114: {fileID: 114000012724889122}
   - 114: {fileID: 114000012529603990}
   - 135: {fileID: 135000012407693816}
+  - 114: {fileID: 114000011316648898}
   m_Layer: 0
   m_Name: FollowerGoth
   m_TagString: Untagged
@@ -631,6 +632,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1000011055642328, guid: 542f8a7a337ded7478b1bb5a2d0d35d1, type: 2}
+--- !u!114 &114000011316648898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012498655942}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5525354940a82e74c9c8d8391c2a9314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012529603990
 MonoBehaviour:
   m_ObjectHideFlags: 1

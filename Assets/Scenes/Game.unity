@@ -5245,7 +5245,7 @@ MonoBehaviour:
   - {fileID: 1000010588618698, guid: 7e48dbdc564a2b844a2addb5a89e0d5d, type: 2}
   - {fileID: 1000012498655942, guid: 24b35e9735942c141a8090ed3c51dea9, type: 2}
   - {fileID: 1000013382765364, guid: 6aa149753c27f9342afffbf8fd4ae1e8, type: 2}
-  _totalAmount: 400
+  _totalAmount: 1000
   assisTierOne: 000000000200000003000000
   assisTierTwo: 0400000006000000
   assisTierThree: 09000000
@@ -5258,6 +5258,8 @@ MonoBehaviour:
   hippiesTierOne: 000000000100000003000000
   hippiesTierTwo: 0600000007000000
   hippiesTierThree: 0b000000
+  convertParticles: []
+  testCube: {fileID: 1000010054226546, guid: 7d1fa2045a959c14cae9c15599b7281e, type: 2}
 --- !u!4 &1350181689
 Transform:
   m_ObjectHideFlags: 0
