@@ -3968,6 +3968,10 @@ MonoBehaviour:
   _followerHateTypes: 0300000002000000
   _targetIcon: {fileID: 21300010, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
   _directionIndicator: {fileID: 212000010205544356}
+  _demandClips:
+  - {fileID: 8300000, guid: ed5fece263da7ef4db4ce38f66ce587a, type: 3}
+  - {fileID: 8300000, guid: e419cbd97f3309a43a168a2d4e741079, type: 3}
+  - {fileID: 8300000, guid: 023f8a6caad954e46a74641080f839d7, type: 3}
 --- !u!135 &135000012870528832
 SphereCollider:
   m_ObjectHideFlags: 1

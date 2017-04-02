@@ -22,7 +22,7 @@ public class Follower : MonoBehaviour {
 	public float _lowerLoyaltyMinTime = 5f;
 	public float _lowerLoyaltyMaxTime = 15f;
 	
-
+	private AudioSource _audioSource;
 	private Leader _leader;
 	private float _loyalty;
 	private int _demandLevel;
@@ -91,6 +91,7 @@ public class Follower : MonoBehaviour {
 
 		_unusedTargets = new List<Target>(_possibleTargetsTierOne);
 		_speechBubble = GetComponentInChildren<SpeechBubbleSpawner>();
+		_audioSource = GetComponent<AudioSource>();
 	}
 
 	void OnTriggerEnter(Collider collider){
@@ -100,18 +101,17 @@ public class Follower : MonoBehaviour {
 		Leader leader = collider.gameObject.GetComponent<Leader>();
 		if(leader != null){
 			foreach(Target target in leader._targets){
-				foreach(Type targetType in target._followerLoveTypes){
-					if(targetType == _type){
+				{
 						//check if target is in active demand tier
 						if(CheckTargetInDemands(target._type)){
-							if(Random.value > _chanceToFollow)
+							if(Random.value > 1)
 								return;
 							Add(leader);
 							_leader = leader;
 							SetTarget(target);
 							return;
 						}
-					}
+					
 				}
 			}
 		}
@@ -168,6 +168,10 @@ public class Follower : MonoBehaviour {
 	}
 	void SetTarget(Target target){
 		_speechBubble.TargetIcon = target._targetIcon;
+		if(target._demandClips.Length > 0){
+			_audioSource.clip = (target._demandClips[Random.Range(0, target._demandClips.Length)]);
+			_audioSource.PlayScheduled(Random.Range(0, .5f));
+		}
 		_currentTarget = target;
 		_leader.AddDemandCount(target._type);
 	}
