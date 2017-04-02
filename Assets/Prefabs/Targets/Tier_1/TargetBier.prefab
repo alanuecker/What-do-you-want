@@ -770,6 +770,11 @@ MonoBehaviour:
   _followerHateTypes: 030000000000000001000000
   _targetIcon: {fileID: 21300016, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
   _directionIndicator: {fileID: 212000014205268464}
+  _demandClips:
+  - {fileID: 8300000, guid: b9582411412f6b0498a8223facde231f, type: 3}
+  - {fileID: 8300000, guid: 39491ad3d74eb1b4b85c4494910bf561, type: 3}
+  - {fileID: 8300000, guid: 6fbb5b445e3ab8344a9deec6fcb38911, type: 3}
+  - {fileID: 8300000, guid: 6add96467e5761442a61e9ff83c2c7cb, type: 3}
 --- !u!135 &135000014293419470
 SphereCollider:
   m_ObjectHideFlags: 1
