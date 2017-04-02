@@ -3226,7 +3226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbaf52cd763570d448d10bc6ee01b69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
+  _type: 1
   _followerLoveTypes: 0200000001000000
   _followerHateTypes: 0000000003000000
   _targetIcon: {fileID: 21300018, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
