@@ -41,7 +41,11 @@ public class Leader : MonoBehaviour {
 		_lastTarget = target;
 		foreach(Follower follower in _crowdManager.ActiveFollower)
 			follower.ReachTarget(target, this);
-		
+	}
+
+	public void AddFollower(Follower follower){
+		_crowdManager.AddActiveFollower(follower);
+
 		float followerCount = _crowdManager.ActiveFollower.Count;
 		_followerPercentages.SetPercentages((float)_crowdManager.AssiCount / followerCount, (float)_crowdManager.HippieCount / followerCount,
 				(float)_crowdManager.NerdCount / followerCount, (float)_crowdManager.GothCount / followerCount );
@@ -49,12 +53,14 @@ public class Leader : MonoBehaviour {
 		_followerPercentages._totalFollowers.text = "" + (int)_crowdManager.AllFollower.Count;
 	}
 
-	public void AddFollower(Follower follower){
-		_crowdManager.AddActiveFollower(follower);
-	}
-
 	public void RemoveFollower(Follower follower){
 		_crowdManager.RemoveActiveFollower(follower);
+
+		float followerCount = _crowdManager.ActiveFollower.Count;
+		_followerPercentages.SetPercentages((float)_crowdManager.AssiCount / followerCount, (float)_crowdManager.HippieCount / followerCount,
+				(float)_crowdManager.NerdCount / followerCount, (float)_crowdManager.GothCount / followerCount );
+		_followerPercentages._activeFollowers.text = "" + (int)followerCount;
+		_followerPercentages._totalFollowers.text = "" + (int)_crowdManager.AllFollower.Count;
 	}
 
 	public void AddDemandCount(Target.Type type){
@@ -75,6 +81,6 @@ public class Leader : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 }

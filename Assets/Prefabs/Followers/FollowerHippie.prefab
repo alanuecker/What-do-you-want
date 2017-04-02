@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chanceToFollow: 0.5
-  _type: 1
+  _type: 3
   _possibleTargetsTierOne: []
   _possibleTargetsTierTwo: []
   _possibleTargetsTierThree: []

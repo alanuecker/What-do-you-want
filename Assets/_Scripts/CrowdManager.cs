@@ -35,6 +35,8 @@ public class CrowdManager : MonoBehaviour {
 	public int[] hippiesTierTwo;
 	public int[] hippiesTierThree;
 
+	public GameObject[] convertParticles;
+
 	private Transform _player;
 	private List<Follower> _allFollower = new List<Follower>();
 	private List<Follower> _activeFollower = new List<Follower>();
@@ -202,19 +204,21 @@ public class CrowdManager : MonoBehaviour {
 	}
 
 	void CalculateDemandTier(List<Follower> active, ref int totalNumber){
-		if(active.Count >= (_totalAmount/4)*0.75f){
+		if(active.Count >= (_totalAmount/4)*0.5f){
 			if(totalNumber != 2){
 				totalNumber = 2;
+				print("demandTier " + active[0]._type + " 2");
 				SwitchDemandTarget(active[0]._type);
 				foreach(Follower act in active)
 					act.SetDemand(2);
 			}
 		}
-		else if(active.Count >= (_totalAmount/4)*0.5f){
+		else if(active.Count >= (_totalAmount/4)*1/3f){
 			if(totalNumber != 1){
 				if(totalNumber == 2)
 					SwitchDemandTarget(active[0]._type);
 				totalNumber = 1;
+				print("demandTier " + active[0]._type + " 1");
 				foreach(Follower act in active)
 					act.SetDemand(1);
 			}
@@ -223,6 +227,7 @@ public class CrowdManager : MonoBehaviour {
 				if(totalNumber == 2)
 					SwitchDemandTarget(active[0]._type);
 				totalNumber = 0;
+				print("demandTier " + active[0]._type + " 0");
 				foreach(Follower act in active)
 					act.SetDemand(0);
 			}
@@ -231,19 +236,24 @@ public class CrowdManager : MonoBehaviour {
 
 	void ActivateDemandDirectionIndicator(Target.Type type){
 		foreach(Target tar in _targets){
-			if(tar._type == type)
+			if(tar._type == type){
+				print("activate indicator " + type);
 				tar.transform.Find("DirectionIndicator").gameObject.SetActive(true);
+			}
 		}
 	}
 
 	void DeactivateDemandDirectionIndicator(Target.Type type){
 		foreach(Target tar in _targets){
-			if(tar._type == type)
+			if(tar._type == type){
+				print("deactivate indicator " + type);
 				tar.transform.Find("DirectionIndicator").gameObject.SetActive(false);
+			}
+				
 		}
 	}
 
-		void DeactivateAllDemandDirectionIndicator(){
+	void DeactivateAllDemandDirectionIndicator(){
 		foreach(Target tar in _targets){
 			tar.transform.Find("DirectionIndicator").gameObject.SetActive(false);
 		}
@@ -284,23 +294,28 @@ public class CrowdManager : MonoBehaviour {
 	public void AddDemandCount(Target.Type type){
 		if(_demandCount.ContainsKey(type))
 			_demandCount[type]++;
-		else
+		else{
+			ActivateDemandDirectionIndicator(type);
 			_demandCount.Add(type, 1);
+		}
 
-		ActivateDemandDirectionIndicator(type);
+		print("demand " + type + " count " + _demandCount[type]);
 	}
 
 	public void RemoveDemandCount(Target.Type type){
 		if(_demandCount.ContainsKey(type))
 			if(_demandCount[type]-- <= 0){
+				print("deactivate indicator for " + type);
 				DeactivateDemandDirectionIndicator(type);
 				_demandCount.Remove(type);
 			}
-			else
+			else{
 				_demandCount[type]--;
+				print("remove demand count " + _demandCount[type]);
+			}
 	}
 
-	void CreateNewActiveFollower(Follower.Type type, Vector3 pos){
+	public void CreateNewActiveFollower(Follower.Type type, Vector3 pos, Leader leader){
 		List<Target> tierOne = new List<Target>();
 			List<Target> tierTwo = new List<Target>();
 			List<Target> tierThree = new List<Target>();
@@ -320,6 +335,11 @@ public class CrowdManager : MonoBehaviour {
 		follower.GetComponent<FollowTarget>().SetTarget(_player.transform);
 		
 		_allFollower.Add(follower.GetComponent<Follower>());
+
+		follower.GetComponent<Follower>().Add(leader);
+
+		if(convertParticles.Length > (int)type)
+			Destroy(Instantiate(convertParticles[(int)type], pos, Quaternion.identity), 5f);
 	}
 
 	void Start () {
@@ -345,6 +365,14 @@ public class CrowdManager : MonoBehaviour {
 				Vector3 randomPosition = new Vector3(Random.Range(_spawnCenter.position.x -_spawnRange, _spawnCenter.position.x + _spawnRange + 1), Random.Range(_spawnCenter.position.y - 25, _spawnCenter.position.y + 12), Random.Range(_spawnCenter.position.z -_spawnRange, _spawnCenter.position.z + _spawnRange + 1));
 				if(NavMesh.SamplePosition(randomPosition, out hit, 10.0f, NavMesh.AllAreas)){
 					randomPosition = hit.position;
+					Ray ray = new Ray(hit.position + Vector3.up * 100, hit.position - Vector3.up * 100);
+					RaycastHit raycastHit;
+					if(Physics.Raycast(ray, out raycastHit, 200f, LayerMask.GetMask("Terrain")))
+						randomPosition = raycastHit.point;
+					else {
+							j--;
+						continue;
+						}
 				}else{
 					j--;
 					continue;

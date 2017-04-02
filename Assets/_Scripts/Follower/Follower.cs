@@ -5,9 +5,9 @@ using UnityEngine;
 public class Follower : MonoBehaviour {
 	public enum Type{
 		assi = 0,
-		hippie = 3,
+		nerd = 1,
 		goth = 2,
-		nerd = 1
+		hippie = 3		
 	}
 	public float _chanceToFollow = .25f;
 	public Type _type;
@@ -54,6 +54,8 @@ public class Follower : MonoBehaviour {
 			_loyalty = value;
 			if(_loyalty < -4)
 				Remove();
+			else if(_loyalty > 5)
+				ConvertFollower();
 		}
 		get {
 			return _loyalty;
@@ -98,16 +100,18 @@ public class Follower : MonoBehaviour {
 		Leader leader = collider.gameObject.GetComponent<Leader>();
 		if(leader != null){
 			foreach(Target target in leader._targets){
-			foreach(Type targetType in target._followerLoveTypes){
-				if(targetType == _type){
-					if(Random.value > _chanceToFollow)
-						return;
-					Add(leader);
-					_leader = leader;
-					SetTarget(target);
-					return;
+				{
+						//check if target is in active demand tier
+						if(CheckTargetInDemands(target._type)){
+							if(Random.value > 1)
+								return;
+							Add(leader);
+							_leader = leader;
+							SetTarget(target);
+							return;
+						}
+					
 				}
-			}
 			}
 		}
 	}
@@ -167,12 +171,20 @@ public class Follower : MonoBehaviour {
 		_leader.AddDemandCount(target._type);
 	}
 
-	void ConvertFollower(){
+	public void ConvertFollower(){
 		foreach(Follower follower in _leader._crowdManager.ActiveFollower){
 			if(follower._type != _type){
+				Vector3 pos = follower.transform.position;
+				_leader._crowdManager.ActiveFollower.Remove(follower);
+				_leader._crowdManager.AllFollower.Remove(follower);
+				Destroy(follower.gameObject);
 
+				_leader._crowdManager.CreateNewActiveFollower(_type, pos, _leader);
+				_loyalty -= 5;
+				return;
 			}
 		}
+
 	}
 
 	public void MoshPit(List<Vector3> path){
@@ -188,7 +200,7 @@ public class Follower : MonoBehaviour {
 		_possibleTargetsTierThree = tierThree;
 	}
 
-	void Add(Leader leader){
+	public void Add(Leader leader){
 		StopCoroutine(LowerLoyalty(null));
 		StartCoroutine(LowerLoyalty(new WaitForSeconds(Random.Range(5, 10))));
 		_followTarget.enabled = true;
@@ -217,6 +229,32 @@ public class Follower : MonoBehaviour {
 
 		//default shouldn't be reached
 		return new List<Target>(_possibleTargetsTierOne);
+	}
+
+	bool CheckTargetInDemands(Target.Type type){
+
+		switch(_demandLevel){
+			case 0: 
+				foreach(Target target in _possibleTargetsTierOne){
+					if(target._type == type)
+						return true;
+				}
+				break;
+			case 1: 
+				foreach(Target target in _possibleTargetsTierTwo){
+					if(target._type == type)
+						return true;
+				}
+				break;
+			case 2: 
+				foreach(Target target in _possibleTargetsTierThree){
+					if(target._type == type)
+						return true;
+				}
+				break;
+		}
+
+		return false;
 	}
 
 	// Update is called once per frame
