@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Follower : MonoBehaviour {
 	public enum Type{
-		assi,
-		hippie,
-		goth,
-		nerd
+		assi = 0,
+		hippie = 3,
+		goth = 2,
+		nerd = 1
 	}
 	public float _chanceToFollow = .25f;
 	public Type _type;
@@ -165,6 +165,14 @@ public class Follower : MonoBehaviour {
 		_speechBubble.TargetIcon = target._targetIcon;
 		_currentTarget = target;
 		_leader.AddDemandCount(target._type);
+	}
+
+	void ConvertFollower(){
+		foreach(Follower follower in _leader._crowdManager.ActiveFollower){
+			if(follower._type != _type){
+
+			}
+		}
 	}
 
 	public void MoshPit(List<Vector3> path){
