@@ -35,6 +35,7 @@ public class Follower : MonoBehaviour {
 
 
 	private bool _pit;
+	private Vector3 _lastPos;
 
 	private float Loyalty{
 		set {
@@ -121,13 +122,15 @@ public class Follower : MonoBehaviour {
 
 	IEnumerator LowerLoyalty(WaitForSeconds wait){
 		yield return wait;
-		foreach(Target target in _leader._targets){
-				if(_currentTarget == target){
-					
-					yield return null;
-				}
+		if(_followTarget.enabled){
+			foreach(Target target in _leader._targets){
+					if(_currentTarget == target){
+						
+						yield return null;
+					}
+			}
+			Loyalty--;
 		}
-		Loyalty--;
 	}
 
 	public void ReachTarget(Target target, Leader leader){
@@ -190,10 +193,19 @@ public class Follower : MonoBehaviour {
 	}
 
 	public void MoshPit(List<Vector3> path){
+		StopCoroutine(LowerLoyalty(null));
 		_followTarget.enabled = false;
 		_followMoshPit.enabled = true;
 		_leader = null;
 		_followMoshPit.SetPath(path);
+		_lastPos = transform.position;
+	}
+
+	public void StopMoshPit(){
+		_followMoshPit.GoToPosition(_lastPos);
+		_followMoshPit.enabled = false;
+		if(_isFollowingPlayer)
+			_followTarget.enabled = true;
 	}
 
 	public void SetPossibleTargets(List<Target> tierOne, List<Target> tierTwo, List<Target> tierThree){

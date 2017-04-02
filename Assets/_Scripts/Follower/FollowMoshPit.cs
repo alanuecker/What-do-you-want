@@ -35,6 +35,10 @@ public class FollowMoshPit : MonoBehaviour {
 		//_navMeshAgent.
 	}
 
+	public void GoToPosition(Vector3 lastPos){
+		_navMeshAgent.SetDestination(lastPos);
+	}
+
 	public void SetPath(List<Vector3> path){
 		if(path.Count != 0){
 			_path = path;
