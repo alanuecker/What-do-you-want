@@ -22,7 +22,7 @@ public class Follower : MonoBehaviour {
 	public float _lowerLoyaltyMinTime = 5f;
 	public float _lowerLoyaltyMaxTime = 15f;
 	
-
+	private AudioSource _audioSource;
 	private Leader _leader;
 	private float _loyalty;
 	private int _demandLevel;
@@ -94,6 +94,7 @@ public class Follower : MonoBehaviour {
 
 		_unusedTargets = new List<Target>(_possibleTargetsTierOne);
 		_speechBubble = GetComponentInChildren<SpeechBubbleSpawner>();
+		_audioSource = GetComponent<AudioSource>();
 	}
 
 	void OnTriggerEnter(Collider collider){
@@ -171,6 +172,9 @@ public class Follower : MonoBehaviour {
 		_speechBubble.TargetIcon = target._targetIcon;
 		_currentTarget = target;
 		_leader.AddDemandCount(target._type);
+
+		_audioSource.clip = target._demandClips[Random.Range(0, target._demandClips.Length)];
+		_audioSource.PlayScheduled(Random.Range(0, .5f));
 	}
 
 	public void ConvertFollower(){
