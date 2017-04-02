@@ -7,11 +7,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: Cube24_default
     100002: //RootNode
+    100004: Cube24_default_zelt_01
     400000: Cube24_default
     400002: //RootNode
+    400004: Cube24_default_zelt_01
     2300000: Cube24_default
+    2300002: Cube24_default_zelt_01
     3300000: Cube24_default
+    3300002: Cube24_default_zelt_01
     4300000: Cube24_default
+    4300002: Cube24_default_zelt_01
   materials:
     importMaterials: 1
     materialName: 0
