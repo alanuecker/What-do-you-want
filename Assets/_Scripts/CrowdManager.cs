@@ -299,6 +299,29 @@ public class CrowdManager : MonoBehaviour {
 			else
 				_demandCount[type]--;
 	}
+
+	void CreateNewActiveFollower(Follower.Type type, Vector3 pos){
+		List<Target> tierOne = new List<Target>();
+			List<Target> tierTwo = new List<Target>();
+			List<Target> tierThree = new List<Target>();
+
+			foreach(int x in _tierOne[(int)type]){
+				tierOne.Add(_targets[x]);
+			}
+			foreach(int x in _tierTwo[(int)type]){
+				tierTwo.Add(_targets[x]);
+			}
+			foreach(int x in _tierThree[(int)type]){
+				tierThree.Add(_targets[x]);
+			}
+
+		GameObject follower = (GameObject)Instantiate(_followers[(int)type], pos, Quaternion.identity);
+		follower.GetComponent<Follower>().SetPossibleTargets(tierOne, tierTwo, tierThree);
+		follower.GetComponent<FollowTarget>().SetTarget(_player.transform);
+		
+		_allFollower.Add(follower.GetComponent<Follower>());
+	}
+
 	void Start () {
 		_player = GameObject.FindGameObjectWithTag("Player").transform;
 
