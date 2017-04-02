@@ -22,7 +22,7 @@ public class Follower : MonoBehaviour {
 	public float _lowerLoyaltyMinTime = 5f;
 	public float _lowerLoyaltyMaxTime = 15f;
 	
-	private AudioSource _audioSource;
+
 	private Leader _leader;
 	private float _loyalty;
 	private int _demandLevel;
@@ -30,11 +30,12 @@ public class Follower : MonoBehaviour {
 	private Target _currentTarget;
 	private List<Target> _unusedTargets;
 	private FollowTarget _followTarget;
+	private FollowMoshPit _followMoshPit;
 	private bool _isFollowingPlayer;
 
-	private int _pitTarget;
+
 	private bool _pit;
-	private List<Vector3> _pitPath;
+
 	private float Loyalty{
 		set {
 			if(value - _loyalty >= 3)
@@ -89,9 +90,10 @@ public class Follower : MonoBehaviour {
 		_followTarget = GetComponent<FollowTarget>();
 		_isFollowingPlayer = _followTarget.enabled;
 
+		_followMoshPit = GetComponent<FollowMoshPit>();
+
 		_unusedTargets = new List<Target>(_possibleTargetsTierOne);
 		_speechBubble = GetComponentInChildren<SpeechBubbleSpawner>();
-		_audioSource = GetComponent<AudioSource>();
 	}
 
 	void OnTriggerEnter(Collider collider){
@@ -167,10 +169,6 @@ public class Follower : MonoBehaviour {
 	}
 	void SetTarget(Target target){
 		_speechBubble.TargetIcon = target._targetIcon;
-		if(target._demandClips.Length > 0){
-			_audioSource.clip = (target._demandClips[Random.Range(0, target._demandClips.Length)]);
-			_audioSource.PlayScheduled(Random.Range(0, .5f));
-		}
 		_currentTarget = target;
 		_leader.AddDemandCount(target._type);
 	}
@@ -192,10 +190,10 @@ public class Follower : MonoBehaviour {
 	}
 
 	public void MoshPit(List<Vector3> path){
+		_followTarget.enabled = false;
+		_followMoshPit.enabled = true;
 		_leader = null;
-		_pit = true;
-		_pitPath = path;
-		//_followTarget.SetTarget(path[_pitTarget]);
+		_followMoshPit.SetPath(path);
 	}
 
 	public void SetPossibleTargets(List<Target> tierOne, List<Target> tierTwo, List<Target> tierThree){
@@ -208,6 +206,7 @@ public class Follower : MonoBehaviour {
 		StopCoroutine(LowerLoyalty(null));
 		StartCoroutine(LowerLoyalty(new WaitForSeconds(Random.Range(5, 10))));
 		_followTarget.enabled = true;
+		_followMoshPit.enabled = false;
 		leader.GetComponent<Leader>().AddFollower(this);
 		_isFollowingPlayer = true;
 	}
@@ -263,14 +262,5 @@ public class Follower : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(_pit){
-			//if(_followTarget.GetAtTarget())
-				//_followTarget.SetTarget(_pitPath[_pitTarget]);
-
-			if(++_pitTarget >= _pitPath.Count){
-				_pit = false;
-				SetDemand(_demandLevel);
-			}
-		}
 	}
 }

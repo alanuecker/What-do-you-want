@@ -330,7 +330,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010001560618}
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: 0, y: 6.28, z: 0}
+  m_LocalPosition: {x: 0.26, y: 7.93, z: 0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
   m_Children:
@@ -428,10 +428,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011310386848}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.52, y: 10.814554, z: 44.1}
+  m_LocalRotation: {x: -0, y: 0.15345883, z: -0, w: 0.9881551}
+  m_LocalPosition: {x: 14.81, y: 10.814554, z: 44.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 17.349, z: 0}
   m_Children:
   - {fileID: 4000011992322106}
   - {fileID: 4000010092120008}
@@ -766,8 +766,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _followerLoveTypes: 02000000
-  _followerHateTypes: 030000000000000001000000
+  _followerLoveTypes: 000000000100000003000000
+  _followerHateTypes: 02000000
   _targetIcon: {fileID: 21300016, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
   _directionIndicator: {fileID: 212000014205268464}
   _demandClips:

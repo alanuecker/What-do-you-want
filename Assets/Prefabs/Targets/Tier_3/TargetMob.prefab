@@ -325,8 +325,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013763877498}
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: 0, y: 6.28, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 1.45, y: 6.28, z: 2.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
   m_Children:
   - {fileID: 4000012073173562}
@@ -351,8 +351,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011947537162}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.60715365, y: -1.8654451, z: -13.48205}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 55.81, y: -9.185446, z: -58.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -393,7 +393,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010708821318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -457,10 +457,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011377667682}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0.41, y: 0, z: 1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
   m_Children:
   - {fileID: 4000012978664574}
   - {fileID: 4000012409915390}
@@ -945,10 +945,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbaf52cd763570d448d10bc6ee01b69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
   _followerLoveTypes: 00000000
   _followerHateTypes: 030000000100000002000000
-  _targetIcon: {fileID: 21300000, guid: c0a911c2deae3484e87478fba042c344, type: 3}
+  _targetIcon: {fileID: 21300006, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
   _directionIndicator: {fileID: 212000013472614488}
+  _demandClips: []
 --- !u!135 &135000014156801620
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -990,7 +992,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: c0a911c2deae3484e87478fba042c344, type: 3}
+  m_Sprite: {fileID: 21300006, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1023,7 +1025,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 17dc1120076bd8b4cbc177f8e4ff553c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12be101e2d0c7b949a7b239bf1f20f34, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

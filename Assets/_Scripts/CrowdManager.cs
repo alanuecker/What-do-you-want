@@ -62,31 +62,38 @@ public class CrowdManager : MonoBehaviour {
 	private Dictionary<Target.Type, int> _demandCount = new Dictionary<Target.Type, int>();
 
 	public class MoshPit{
-		Follower _leader;
+		Vector3 _center;
 		List<Follower> _pitPeople;
 		List<Vector3> _path = new List<Vector3>();
 
-		public MoshPit(Follower leader, List<Follower> pitPeople){
-			_leader = leader;
+		public MoshPit(List<Follower> pitPeople){
 			_pitPeople = pitPeople;
+			_center = new Vector3(0, -9f, 0);
 			this.Init();
 		}
 
 		public MoshPit(){
 			_pitPeople = new List<Follower>();
 			_path = new List<Vector3>();
-			_leader = new Follower();
+			_center = new Vector3(0, -9f, 0);
 		}
 
 		void Init(){
-			for (int i = 0; i < 5; i++){
-				Vector3 pos = this.RandomCircle(_leader.transform.position, 1.0f);
-				Quaternion rot = Quaternion.FromToRotation(Vector3.forward, _leader.transform.position-pos);
+			int failed = 0;
+
+			for (int i = 0; i < 6; i++){
+				if(failed > 10)
+					break;
+
+				Vector3 pos = this.RandomCircle(_center, 3.0f, i);
+				Quaternion rot = Quaternion.FromToRotation(Vector3.forward, _center-pos);
 				NavMeshHit hit;
+
 				if(NavMesh.SamplePosition(pos, out hit, 1.0f, NavMesh.AllAreas)){
 					_path.Add(hit.position);
 				}else{
 					i--;
+					failed++;
 					continue;
 				}
 			}
@@ -96,12 +103,12 @@ public class CrowdManager : MonoBehaviour {
 			}
 		}
 
-		Vector3 RandomCircle (Vector3 center, float radius){
-			float ang = Random.value * 360;
+		Vector3 RandomCircle (Vector3 center, float radius, int i){
+			float ang = i * 360/6;
 			Vector3 pos;
 			pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
-			pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
-			pos.z = center.z;
+			pos.y = center.y;
+			pos.z = center.z + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
 			return pos;
      	}
 	}
@@ -207,7 +214,6 @@ public class CrowdManager : MonoBehaviour {
 		if(active.Count >= (_totalAmount/4)*0.5f){
 			if(totalNumber != 2){
 				totalNumber = 2;
-				print("demandTier " + active[0]._type + " 2");
 				SwitchDemandTarget(active[0]._type);
 				foreach(Follower act in active)
 					act.SetDemand(2);
@@ -218,7 +224,6 @@ public class CrowdManager : MonoBehaviour {
 				if(totalNumber == 2)
 					SwitchDemandTarget(active[0]._type);
 				totalNumber = 1;
-				print("demandTier " + active[0]._type + " 1");
 				foreach(Follower act in active)
 					act.SetDemand(1);
 			}
@@ -227,7 +232,6 @@ public class CrowdManager : MonoBehaviour {
 				if(totalNumber == 2)
 					SwitchDemandTarget(active[0]._type);
 				totalNumber = 0;
-				print("demandTier " + active[0]._type + " 0");
 				foreach(Follower act in active)
 					act.SetDemand(0);
 			}
@@ -237,7 +241,6 @@ public class CrowdManager : MonoBehaviour {
 	void ActivateDemandDirectionIndicator(Target.Type type){
 		foreach(Target tar in _targets){
 			if(tar._type == type){
-				print("activate indicator " + type);
 				tar.transform.Find("DirectionIndicator").gameObject.SetActive(true);
 			}
 		}
@@ -246,7 +249,6 @@ public class CrowdManager : MonoBehaviour {
 	void DeactivateDemandDirectionIndicator(Target.Type type){
 		foreach(Target tar in _targets){
 			if(tar._type == type){
-				print("deactivate indicator " + type);
 				tar.transform.Find("DirectionIndicator").gameObject.SetActive(false);
 			}
 				
@@ -298,20 +300,16 @@ public class CrowdManager : MonoBehaviour {
 			ActivateDemandDirectionIndicator(type);
 			_demandCount.Add(type, 1);
 		}
-
-		print("demand " + type + " count " + _demandCount[type]);
 	}
 
 	public void RemoveDemandCount(Target.Type type){
 		if(_demandCount.ContainsKey(type))
-			if(_demandCount[type]-- <= 0){
-				print("deactivate indicator for " + type);
+			if(_demandCount[type] - 1 <= 0){
 				DeactivateDemandDirectionIndicator(type);
 				_demandCount.Remove(type);
 			}
 			else{
 				_demandCount[type]--;
-				print("remove demand count " + _demandCount[type]);
 			}
 	}
 
@@ -384,15 +382,22 @@ public class CrowdManager : MonoBehaviour {
 
 				_allFollower.Add(follower.GetComponent<Follower>());
 			}
-
-					/*List<Follower> pitPeople = new List<Follower>();
-
-		for(int x = 0; x < 20; x++){
-			pitPeople.Add(_allFollower[Random.Range(0, _allFollower.Count)]);
-		}*/
-
-		//MoshPit firstPit = new MoshPit(_allFollower[Random.Range(0, _allFollower.Count)], pitPeople);
 		}
+
+		List<Follower> pitPeople = new List<Follower>();
+
+		for(int x = 0; x < 20; x++){ 
+			Follower fol = _allFollower[Random.Range(0, _allFollower.Count)];
+			if(!pitPeople.Contains(fol))
+				pitPeople.Add(fol);
+			else{
+				x--;
+				continue;
+			}
+		}
+
+		print( pitPeople.Count + " pit people");
+		MoshPit firstPit = new MoshPit(pitPeople);
 	}
 	
 	// Update is called once per frame
