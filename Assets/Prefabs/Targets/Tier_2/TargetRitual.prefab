@@ -374,9 +374,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 6
-  _followerLoveTypes: 0200000001000000
-  _followerHateTypes: 0000000003000000
-  _targetIcon: {fileID: 21300000, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
+  _followerLoveTypes: 0200000003000000
+  _followerHateTypes: 0000000001000000
+  _targetIcon: {fileID: 21300014, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
   _directionIndicator: {fileID: 212000010810705040}
   _demandClips:
   - {fileID: 0}
@@ -470,7 +470,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
+  m_Sprite: {fileID: 21300014, guid: e11c7ced85884ec4fb4a4528f0093fe1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

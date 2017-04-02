@@ -61,19 +61,13 @@ public class CrowdManager : MonoBehaviour {
 
 	private Dictionary<Target.Type, int> _demandCount = new Dictionary<Target.Type, int>();
 
-	//Debug
-	public GameObject testCube;
-
 	public class MoshPit{
 		Vector3 _center;
 		List<Follower> _pitPeople;
 		List<Vector3> _path = new List<Vector3>();
 
-		GameObject _testCube;
-
-		public MoshPit(List<Follower> pitPeople, GameObject testCube){
+		public MoshPit(List<Follower> pitPeople){
 			_pitPeople = pitPeople;
-			_testCube = testCube;
 			_center = new Vector3(0, -9f, 0);
 			this.Init();
 		}
@@ -82,7 +76,6 @@ public class CrowdManager : MonoBehaviour {
 			_pitPeople = new List<Follower>();
 			_path = new List<Vector3>();
 			_center = new Vector3(0, -9f, 0);
-			_testCube = new GameObject();
 		}
 
 		void Init(){
@@ -98,9 +91,6 @@ public class CrowdManager : MonoBehaviour {
 
 				if(NavMesh.SamplePosition(pos, out hit, 1.0f, NavMesh.AllAreas)){
 					_path.Add(hit.position);
-					Debug.DrawRay(hit.position, Vector3.up, Color.green, 1000f);
-					GameObject testCubeInstance = (GameObject)Instantiate(_testCube, hit.position, Quaternion.identity);
-					print("Pit Vector " + hit.position);
 				}else{
 					i--;
 					failed++;
@@ -396,7 +386,7 @@ public class CrowdManager : MonoBehaviour {
 
 		List<Follower> pitPeople = new List<Follower>();
 
-		for(int x = 0; x < 50; x++){ 
+		for(int x = 0; x < 20; x++){ 
 			Follower fol = _allFollower[Random.Range(0, _allFollower.Count)];
 			if(!pitPeople.Contains(fol))
 				pitPeople.Add(fol);
@@ -407,7 +397,7 @@ public class CrowdManager : MonoBehaviour {
 		}
 
 		print( pitPeople.Count + " pit people");
-		MoshPit firstPit = new MoshPit(pitPeople, testCube);
+		MoshPit firstPit = new MoshPit(pitPeople);
 	}
 	
 	// Update is called once per frame
