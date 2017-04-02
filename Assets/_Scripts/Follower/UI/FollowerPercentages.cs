@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class FollowerPercentages : MonoBehaviour {
 	public RectTransform _assiTransform;
 	public RectTransform _hippieTransform;
 	public RectTransform _nerdTransform;
 	public RectTransform _gothTransform;
+	public Text _totalFollowers;
+	public Text _activeFollowers;
+	
 
 	public float _speed = 800f;
 	

@@ -45,6 +45,8 @@ public class Leader : MonoBehaviour {
 		float followerCount = _crowdManager.ActiveFollower.Count;
 		_followerPercentages.SetPercentages((float)_crowdManager.AssiCount / followerCount, (float)_crowdManager.HippieCount / followerCount,
 				(float)_crowdManager.NerdCount / followerCount, (float)_crowdManager.GothCount / followerCount );
+		_followerPercentages._activeFollowers.text = "" + (int)followerCount;
+		_followerPercentages._totalFollowers.text = "" + (int)_crowdManager.AllFollower.Count;
 	}
 
 	public void AddFollower(Follower follower){
