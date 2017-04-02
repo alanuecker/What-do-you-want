@@ -8,6 +8,8 @@ public class Leader : MonoBehaviour {
 	public CrowdManager _crowdManager;
 	public FollowerPercentages _followerPercentages;
 	public AudioClip[] _whatClips;
+	public Animator _endScreenAnimator;
+	public int _amountToWin = 100;
 
 	private AudioSource _audioSource;
 	private Target _lastTarget;
@@ -32,8 +34,6 @@ public class Leader : MonoBehaviour {
 			}
 			oldPos = transform.position;
 			_targets.Remove(_lastTarget);
-				foreach(Target t in _targets)
-					Debug.Log(t);
 		}
 	}
 	public void ReachTarget(Target target){
@@ -56,7 +56,16 @@ public class Leader : MonoBehaviour {
 		_followerPercentages.SetPercentages((float)_crowdManager.AssiCount / followerCount, (float)_crowdManager.HippieCount / followerCount,
 				(float)_crowdManager.NerdCount / followerCount, (float)_crowdManager.GothCount / followerCount );
 		_followerPercentages._activeFollowers.text = "" + (int)followerCount;
-		_followerPercentages._totalFollowers.text = "" + (int)_crowdManager.AllFollower.Count;
+		_followerPercentages._totalFollowers.text = "" + (int)_amountToWin;
+
+		if(_crowdManager.ActiveFollower.Count / _amountToWin >= 1f){
+			Victory();
+		}
+	}
+
+	void Victory(){
+		Time.timeScale = 0;
+		_endScreenAnimator.Play("ShowVictoryScreen");
 	}
 
 	public void RemoveFollower(Follower follower){
@@ -83,6 +92,7 @@ public class Leader : MonoBehaviour {
 		_crowdManager = GameObject.FindGameObjectWithTag("CrowdManager").GetComponent<CrowdManager>();
 		StartCoroutine(UpdateTarget());
 		_audioSource = GetComponent<AudioSource>();
+		_followerPercentages._totalFollowers.text = "" + (int)_amountToWin;
 	}
 	
 	// Update is called once per frame
