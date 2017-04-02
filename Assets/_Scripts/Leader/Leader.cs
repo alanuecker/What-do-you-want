@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Leader : MonoBehaviour {
 	public List<Target> _targets;
@@ -10,6 +12,8 @@ public class Leader : MonoBehaviour {
 	public AudioClip[] _whatClips;
 	public Animator _endScreenAnimator;
 	public int _amountToWin = 100;
+	public Sprite[] _newsPaper;
+	public Image _newspaperImage;
 
 	private AudioSource _audioSource;
 	private Target _lastTarget;
@@ -65,7 +69,18 @@ public class Leader : MonoBehaviour {
 
 	void Victory(){
 		Time.timeScale = 0;
-		_endScreenAnimator.Play("ShowVictoryScreen");
+		if(_crowdManager.AssiCount > _crowdManager.NerdCount && _crowdManager.AssiCount > _crowdManager.HippieCount && _crowdManager.AssiCount > _crowdManager.GothCount)
+			_newspaperImage.sprite = _newsPaper[0];
+		else if(_crowdManager.NerdCount > _crowdManager.AssiCount && _crowdManager.NerdCount > _crowdManager.GothCount && _crowdManager.NerdCount > _crowdManager.HippieCount)
+			_newspaperImage.sprite = _newsPaper[1];
+		else if(_crowdManager.GothCount > _crowdManager.AssiCount && _crowdManager.GothCount > _crowdManager.NerdCount  && _crowdManager.GothCount > _crowdManager.HippieCount )
+			_newspaperImage.sprite = _newsPaper[2];
+		else
+			_newspaperImage.sprite = _newsPaper[3];
+
+
+
+		_endScreenAnimator.Play("Victory");
 	}
 
 	public void RemoveFollower(Follower follower){
