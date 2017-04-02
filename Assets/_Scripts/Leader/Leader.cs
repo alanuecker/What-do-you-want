@@ -7,7 +7,9 @@ public class Leader : MonoBehaviour {
 	public Target[] _possibleTargets;
 	public CrowdManager _crowdManager;
 	public FollowerPercentages _followerPercentages;
+	public AudioClip[] _whatClips;
 
+	private AudioSource _audioSource;
 	private Target _lastTarget;
 
 
@@ -41,6 +43,9 @@ public class Leader : MonoBehaviour {
 		_lastTarget = target;
 		foreach(Follower follower in _crowdManager.ActiveFollower)
 			follower.ReachTarget(target, this);
+
+		_audioSource.clip = _whatClips[Random.Range(0, _whatClips.Length)];
+		_audioSource.PlayScheduled(2.5f);
 	}
 
 	public void AddFollower(Follower follower){
@@ -77,6 +82,7 @@ public class Leader : MonoBehaviour {
 		_crowdManager = GameObject.FindGameObjectWithTag("CrowdManager").GetComponent<CrowdManager>();
 		AskForTargets();
 		StartCoroutine(UpdateTarget());
+		_audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame

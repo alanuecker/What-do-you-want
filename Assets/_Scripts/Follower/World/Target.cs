@@ -25,6 +25,7 @@ public class Target : MonoBehaviour {
 	public Follower.Type[] _followerHateTypes;
 	public Sprite _targetIcon;
 	public SpriteRenderer _directionIndicator;
+	public AudioClip[] _demandClips;
 
 	private Vector3 _directionIndicatorOriginalPosition;
 
