@@ -204,7 +204,7 @@ public class CrowdManager : MonoBehaviour {
 	}
 
 	void CalculateDemandTier(List<Follower> active, ref int totalNumber){
-		if(active.Count >= (_totalAmount/4)*0.75f){
+		if(active.Count >= (_totalAmount/4)*0.5f){
 			if(totalNumber != 2){
 				totalNumber = 2;
 				print("demandTier " + active[0]._type + " 2");
@@ -213,7 +213,7 @@ public class CrowdManager : MonoBehaviour {
 					act.SetDemand(2);
 			}
 		}
-		else if(active.Count >= (_totalAmount/4)*0.5f){
+		else if(active.Count >= (_totalAmount/4)*1/3f){
 			if(totalNumber != 1){
 				if(totalNumber == 2)
 					SwitchDemandTarget(active[0]._type);
@@ -365,6 +365,14 @@ public class CrowdManager : MonoBehaviour {
 				Vector3 randomPosition = new Vector3(Random.Range(_spawnCenter.position.x -_spawnRange, _spawnCenter.position.x + _spawnRange + 1), Random.Range(_spawnCenter.position.y - 25, _spawnCenter.position.y + 12), Random.Range(_spawnCenter.position.z -_spawnRange, _spawnCenter.position.z + _spawnRange + 1));
 				if(NavMesh.SamplePosition(randomPosition, out hit, 10.0f, NavMesh.AllAreas)){
 					randomPosition = hit.position;
+					Ray ray = new Ray(hit.position + Vector3.up * 100, hit.position - Vector3.up * 100);
+					RaycastHit raycastHit;
+					if(Physics.Raycast(ray, out raycastHit, 200f, LayerMask.GetMask("Terrain")))
+						randomPosition = raycastHit.point;
+					else {
+							j--;
+						continue;
+						}
 				}else{
 					j--;
 					continue;

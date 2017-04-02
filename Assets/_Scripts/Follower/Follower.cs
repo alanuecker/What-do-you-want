@@ -100,18 +100,17 @@ public class Follower : MonoBehaviour {
 		Leader leader = collider.gameObject.GetComponent<Leader>();
 		if(leader != null){
 			foreach(Target target in leader._targets){
-				foreach(Type targetType in target._followerLoveTypes){
-					if(targetType == _type){
+				{
 						//check if target is in active demand tier
 						if(CheckTargetInDemands(target._type)){
-							if(Random.value > _chanceToFollow)
+							if(Random.value > 1)
 								return;
 							Add(leader);
 							_leader = leader;
 							SetTarget(target);
 							return;
 						}
-					}
+					
 				}
 			}
 		}
