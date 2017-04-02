@@ -2322,7 +2322,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: -1
   far clip plane: 1000
   field of view: 30
   orthographic: 1
@@ -5246,17 +5246,17 @@ MonoBehaviour:
   - {fileID: 1000012498655942, guid: 24b35e9735942c141a8090ed3c51dea9, type: 2}
   - {fileID: 1000013382765364, guid: 6aa149753c27f9342afffbf8fd4ae1e8, type: 2}
   _totalAmount: 400
-  assisTierOne: 000000000100000003000000
-  assisTierTwo: 0600000007000000
+  assisTierOne: 000000000200000003000000
+  assisTierTwo: 0400000006000000
   assisTierThree: 09000000
-  nerdsTierOne: 000000000100000003000000
-  nerdsTierTwo: 0400000006000000
+  nerdsTierOne: 010000000200000003000000
+  nerdsTierTwo: 0400000005000000
   nerdsTierThree: 0a000000
-  gothsTierOne: 010000000200000003000000
-  gothsTierTwo: 0400000005000000
+  gothsTierOne: 000000000100000002000000
+  gothsTierTwo: 0500000007000000
   gothsTierThree: 08000000
-  hippiesTierOne: 010000000200000003000000
-  hippiesTierTwo: 0500000007000000
+  hippiesTierOne: 000000000100000003000000
+  hippiesTierTwo: 0600000007000000
   hippiesTierThree: 0b000000
 --- !u!4 &1350181689
 Transform:
