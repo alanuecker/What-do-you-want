@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Follower : MonoBehaviour {
 	public enum Type{
-		assi,
-		hippie,
-		goth,
-		nerd
+		assi = 0,
+		nerd = 1,
+		goth = 2,
+		hippie = 3		
 	}
 	public float _chanceToFollow = .25f;
 	public Type _type;
@@ -54,6 +54,8 @@ public class Follower : MonoBehaviour {
 			_loyalty = value;
 			if(_loyalty < -4)
 				Remove();
+			else if(_loyalty > 5)
+				ConvertFollower();
 		}
 		get {
 			return _loyalty;
@@ -170,6 +172,22 @@ public class Follower : MonoBehaviour {
 		_leader.AddDemandCount(target._type);
 	}
 
+	public void ConvertFollower(){
+		foreach(Follower follower in _leader._crowdManager.ActiveFollower){
+			if(follower._type != _type){
+				Vector3 pos = follower.transform.position;
+				_leader._crowdManager.ActiveFollower.Remove(follower);
+				_leader._crowdManager.AllFollower.Remove(follower);
+				Destroy(follower.gameObject);
+
+				_leader._crowdManager.CreateNewActiveFollower(_type, pos, _leader);
+				_loyalty -= 5;
+				return;
+			}
+		}
+
+	}
+
 	public void MoshPit(List<Vector3> path){
 		_leader = null;
 		_pit = true;
@@ -183,7 +201,7 @@ public class Follower : MonoBehaviour {
 		_possibleTargetsTierThree = tierThree;
 	}
 
-	void Add(Leader leader){
+	public void Add(Leader leader){
 		StopCoroutine(LowerLoyalty(null));
 		StartCoroutine(LowerLoyalty(new WaitForSeconds(Random.Range(5, 10))));
 		_followTarget.enabled = true;
