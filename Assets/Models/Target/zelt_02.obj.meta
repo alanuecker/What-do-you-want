@@ -22,6 +22,22 @@ ModelImporter:
     100028: Cylinder25_copy33_default
     100030: Cylinder25_default
     100032: //RootNode
+    100034: Cube24_copy40_default_zelt_02
+    100036: zelt_02_Cube24_copy34_default
+    100038: zelt_02_Cube24_copy39_default
+    100040: zelt_02_Cube35_copy36_default
+    100042: zelt_02_Cube35_copy37_default
+    100044: zelt_02_Cube35_copy38_default
+    100046: zelt_02_Cube35_default
+    100048: zelt_02_Cylinder25_copy26_default
+    100050: zelt_02_Cylinder25_copy27_default
+    100052: zelt_02_Cylinder25_copy28_default
+    100054: zelt_02_Cylinder25_copy29_default
+    100056: zelt_02_Cylinder25_copy30_default
+    100058: zelt_02_Cylinder25_copy31_default
+    100060: zelt_02_Cylinder25_copy32_default
+    100062: zelt_02_Cylinder25_copy33_default
+    100064: zelt_02_Cylinder25_default
     400000: Cube24_copy34_default
     400002: Cube24_copy39_default
     400004: Cube24_copy40_default
@@ -39,6 +55,22 @@ ModelImporter:
     400028: Cylinder25_copy33_default
     400030: Cylinder25_default
     400032: //RootNode
+    400034: Cube24_copy40_default_zelt_02
+    400036: zelt_02_Cube24_copy34_default
+    400038: zelt_02_Cube24_copy39_default
+    400040: zelt_02_Cube35_copy36_default
+    400042: zelt_02_Cube35_copy37_default
+    400044: zelt_02_Cube35_copy38_default
+    400046: zelt_02_Cube35_default
+    400048: zelt_02_Cylinder25_copy26_default
+    400050: zelt_02_Cylinder25_copy27_default
+    400052: zelt_02_Cylinder25_copy28_default
+    400054: zelt_02_Cylinder25_copy29_default
+    400056: zelt_02_Cylinder25_copy30_default
+    400058: zelt_02_Cylinder25_copy31_default
+    400060: zelt_02_Cylinder25_copy32_default
+    400062: zelt_02_Cylinder25_copy33_default
+    400064: zelt_02_Cylinder25_default
     2300000: Cube24_copy34_default
     2300002: Cube24_copy39_default
     2300004: Cube24_copy40_default
@@ -55,6 +87,22 @@ ModelImporter:
     2300026: Cylinder25_copy32_default
     2300028: Cylinder25_copy33_default
     2300030: Cylinder25_default
+    2300032: Cube24_copy40_default_zelt_02
+    2300034: zelt_02_Cube24_copy34_default
+    2300036: zelt_02_Cube24_copy39_default
+    2300038: zelt_02_Cube35_copy36_default
+    2300040: zelt_02_Cube35_copy37_default
+    2300042: zelt_02_Cube35_copy38_default
+    2300044: zelt_02_Cube35_default
+    2300046: zelt_02_Cylinder25_copy26_default
+    2300048: zelt_02_Cylinder25_copy27_default
+    2300050: zelt_02_Cylinder25_copy28_default
+    2300052: zelt_02_Cylinder25_copy29_default
+    2300054: zelt_02_Cylinder25_copy30_default
+    2300056: zelt_02_Cylinder25_copy31_default
+    2300058: zelt_02_Cylinder25_copy32_default
+    2300060: zelt_02_Cylinder25_copy33_default
+    2300062: zelt_02_Cylinder25_default
     3300000: Cube24_copy34_default
     3300002: Cube24_copy39_default
     3300004: Cube24_copy40_default
@@ -71,6 +119,22 @@ ModelImporter:
     3300026: Cylinder25_copy32_default
     3300028: Cylinder25_copy33_default
     3300030: Cylinder25_default
+    3300032: Cube24_copy40_default_zelt_02
+    3300034: zelt_02_Cube24_copy34_default
+    3300036: zelt_02_Cube24_copy39_default
+    3300038: zelt_02_Cube35_copy36_default
+    3300040: zelt_02_Cube35_copy37_default
+    3300042: zelt_02_Cube35_copy38_default
+    3300044: zelt_02_Cube35_default
+    3300046: zelt_02_Cylinder25_copy26_default
+    3300048: zelt_02_Cylinder25_copy27_default
+    3300050: zelt_02_Cylinder25_copy28_default
+    3300052: zelt_02_Cylinder25_copy29_default
+    3300054: zelt_02_Cylinder25_copy30_default
+    3300056: zelt_02_Cylinder25_copy31_default
+    3300058: zelt_02_Cylinder25_copy32_default
+    3300060: zelt_02_Cylinder25_copy33_default
+    3300062: zelt_02_Cylinder25_default
     4300000: Cube24_copy34_default
     4300002: Cube24_copy39_default
     4300004: Cube24_copy40_default
@@ -87,6 +151,22 @@ ModelImporter:
     4300026: Cylinder25_copy32_default
     4300028: Cylinder25_copy33_default
     4300030: Cylinder25_default
+    4300032: Cube24_copy40_default_zelt_02
+    4300034: zelt_02_Cube24_copy34_default
+    4300036: zelt_02_Cube24_copy39_default
+    4300038: zelt_02_Cube35_copy36_default
+    4300040: zelt_02_Cube35_copy37_default
+    4300042: zelt_02_Cube35_copy38_default
+    4300044: zelt_02_Cube35_default
+    4300046: zelt_02_Cylinder25_copy26_default
+    4300048: zelt_02_Cylinder25_copy27_default
+    4300050: zelt_02_Cylinder25_copy28_default
+    4300052: zelt_02_Cylinder25_copy29_default
+    4300054: zelt_02_Cylinder25_copy30_default
+    4300056: zelt_02_Cylinder25_copy31_default
+    4300058: zelt_02_Cylinder25_copy32_default
+    4300060: zelt_02_Cylinder25_copy33_default
+    4300062: zelt_02_Cylinder25_default
   materials:
     importMaterials: 1
     materialName: 0
