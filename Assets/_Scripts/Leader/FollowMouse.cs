@@ -21,7 +21,8 @@ public class FollowMouse : MonoBehaviour {
         if (Physics.Raycast (ray, out hit, Mathf.Infinity, LayerMask.GetMask(_terrainLayers)))
 		{
 			if((hit.point - transform.position).magnitude > _deadzoneDistance){
-				_navMeshAgent.destination = hit.point;
+				_navMeshAgent.destination = transform.position + (hit.point - transform.position).normalized;
+
 			} else
 				_navMeshAgent.destination = transform.position;
 		}
