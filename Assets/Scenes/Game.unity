@@ -1165,7 +1165,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 1c91377dded0604489a1e6767001553b, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c91377dded0604489a1e6767001553b, type: 3}
@@ -2539,6 +2539,48 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 9549ef27565d9134bb657c500c642073, type: 3}
   m_PrefabInternal: {fileID: 504569964}
+--- !u!1001 &522763534
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000013757658930, guid: 7b40d6d05c89c5149bdc34b9be38307d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 16.699923
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013757658930, guid: 7b40d6d05c89c5149bdc34b9be38307d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -8.002399
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013757658930, guid: 7b40d6d05c89c5149bdc34b9be38307d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.1445096
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013757658930, guid: 7b40d6d05c89c5149bdc34b9be38307d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013757658930, guid: 7b40d6d05c89c5149bdc34b9be38307d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013757658930, guid: 7b40d6d05c89c5149bdc34b9be38307d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013757658930, guid: 7b40d6d05c89c5149bdc34b9be38307d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013757658930, guid: 7b40d6d05c89c5149bdc34b9be38307d, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b40d6d05c89c5149bdc34b9be38307d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &535879115 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 70e22d3dc3253434ebeb980d2f2e51f1, type: 3}
@@ -4735,7 +4777,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: e4616dc1c3ccd9648ac983399fc97cc9, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4616dc1c3ccd9648ac983399fc97cc9, type: 3}
@@ -6537,7 +6579,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: e4616dc1c3ccd9648ac983399fc97cc9, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4616dc1c3ccd9648ac983399fc97cc9, type: 3}
@@ -6946,7 +6988,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: a48e15884c4413448b7b9fd37e4e6a5d, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a48e15884c4413448b7b9fd37e4e6a5d, type: 3}
@@ -7158,7 +7200,7 @@ MonoBehaviour:
   - {fileID: 2068355009}
   - {fileID: 266918714}
   - {fileID: 40207521}
-  - {fileID: 0}
+  - {fileID: 2059506230}
   - {fileID: 1507801993}
   - {fileID: 1309501127}
   - {fileID: 267283592}
@@ -9148,8 +9190,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.75, y: 10.87, z: 6.58}
-  m_Center: {x: 0, y: 4.4, z: 0}
+  m_Size: {x: 11.394027, y: 8.334373, z: 5.7012224}
+  m_Center: {x: -0.008012436, y: 3.132184, z: -0.4393763}
 --- !u!82 &1807538325
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9942,6 +9984,12 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: a48e15884c4413448b7b9fd37e4e6a5d, type: 3}
+--- !u!114 &2059506230 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013301828524, guid: ee6ac0f567b42c440820a9915788a08a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1124454848}
+  m_Script: {fileID: 11500000, guid: bbaf52cd763570d448d10bc6ee01b69c, type: 3}
 --- !u!1001 &2061569993
 Prefab:
   m_ObjectHideFlags: 0
